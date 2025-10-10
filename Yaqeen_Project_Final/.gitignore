@@ -1,0 +1,5 @@
+﻿node_modules
+build
+.env.local
+.env.*.local
+diagnostics
