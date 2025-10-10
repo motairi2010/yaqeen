@@ -1,0 +1,8 @@
+﻿.invoice-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;direction:rtl}
+.invoice-grid .cell{display:flex;flex-direction:column}
+.invoice-grid .cell label{font-weight:600;margin-bottom:6px}
+.invoice-grid input,.invoice-grid select,.invoice-grid textarea{width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:10px}
+.span-1{grid-column:span 1}.span-2{grid-column:span 2}.span-3{grid-column:span 3}.span-4{grid-column:span 4}.full{grid-column:1 / -1}
+@media (min-width: 1280px){
+  .invoice-grid{grid-template-columns:repeat(6,1fr)}
+}

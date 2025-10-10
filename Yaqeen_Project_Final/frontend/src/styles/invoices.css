@@ -1,0 +1,403 @@
+/* ===== Invoice Form Grid (12 columns) ===== */
+.invoice-grid{
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:14px;
+  align-items:start;
+}
+
+/* Col spans */
+.col-span-1{grid-column:span 1}
+.col-span-2{grid-column:span 2}
+.col-span-3{grid-column:span 3}
+.col-span-4{grid-column:span 4}
+.col-span-5{grid-column:span 5}
+.col-span-6{grid-column:span 6}
+.col-span-7{grid-column:span 7}
+.col-span-8{grid-column:span 8}
+.col-span-9{grid-column:span 9}
+.col-span-10{grid-column:span 10}
+.col-span-11{grid-column:span 11}
+.col-span-12{grid-column:span 12}
+
+/* Field */
+.field{display:flex;flex-direction:column}
+.field > label{font-weight:600;font-size:.92rem;margin-bottom:6px}
+.field input,.field select,.field textarea{
+  height:42px;padding:8px 12px;border:1px solid #e5e7eb;border-radius:10px;background:#fff
+}
+.field textarea{height:auto;min-height:90px;resize:vertical}
+
+/* Pills */
+.options-pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 12px;border:1px solid #e5e7eb;border-radius:999px;background:#f8fafc
+}
+.pill input[type="checkbox"]{width:18px;height:18px}
+
+/* Items card: ŸäÿØÿπŸÖ ÿ£ŸÜ ÿ™Ÿàÿ∂ÿπ ÿπŸÑŸâ ÿßŸÑÿ≠ÿßŸàŸäÿ© ÿ£Ÿà ŸÖÿ®ÿßÿ¥ÿ±ÿ© ÿπŸÑŸâ <table> */
+.items-card{
+  border:1px solid #e5e7eb;border-radius:12px;background:#fff;overflow:hidden
+}
+.items-card, .items-card table{width:100%;border-collapse:collapse}
+.items-card thead th{background:#f8fafc;font-weight:700}
+.items-card th,.items-card td{padding:10px 12px;border-bottom:1px solid #f1f5f9;text-align:start}
+
+/* Responsive */
+@media (max-width:1024px){
+  [class*="col-span-"]{grid-column:span 12 !important}
+}
+/* ===== Stage 2: Smart Mapping & Usability ===== */
+
+/*  Ê“Ì⁄  ·ﬁ«∆Ì ··Œ«‰«  Õ”» «·„⁄—¯›«  */
+.field:has(> #invoiceNumber){ grid-column: span 3 }
+.field:has(> #invoiceDate){   grid-column: span 3 }
+.field:has(> #dueDate){       grid-column: span 3 }
+.field:has(> #status){        grid-column: span 3 }
+
+.field:has(> #customerId){    grid-column: span 6 }
+.field:has(> #customerVatId){ grid-column: span 3 }
+.field:has(> #currency){      grid-column: span 3 }
+
+.field:has(> #paymentTerms){  grid-column: span 4 }
+.field:has(> #vatRate){       grid-column: span 4 }
+.field:has(> #discount){      grid-column: span 4 }
+
+/*  ÕÊÌ· √Ì „Ã„Ê⁄…  Õ ÊÌ ‘Ìﬂ »Êﬂ” ≈·Ï Õ»Ê» (»œÊ‰  ⁄œÌ· JSX) */
+.invoice-grid > div:has(input[type="checkbox"]){
+  display:flex; flex-wrap:wrap; gap:8px;
+}
+.invoice-grid > div:has(input[type="checkbox"]) > label{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:8px 12px; border:1px solid #e5e7eb; border-radius:999px; background:#f8fafc;
+}
+
+/* Ã⁄· ÃœÊ· «·⁄‰«’— Ì»œÊ ﬂ»ÿ«ﬁ… Õ Ï ·Ê ·„  ı÷› class ÌœÊÌ« */
+.invoice-grid table{
+  width:100%; border-collapse:collapse;
+}
+.invoice-grid table thead th{ background:#f8fafc; font-weight:700 }
+.invoice-grid table th,
+.invoice-grid table td{ padding:10px 12px; border-bottom:1px solid #f1f5f9; text-align:start }
+.invoice-grid table th:nth-child(1){ min-width:180px }  /* «·„‰ Ã/«·Œœ„… */
+.invoice-grid table th:nth-child(3){ width:90px; text-align:center } /* «·ﬂ„Ì… */
+.invoice-grid table td:nth-child(3){ text-align:center }
+.invoice-grid table th:nth-child(4){ width:120px; text-align:end }   /* «·”⁄— */
+.invoice-grid table td:nth-child(4){ text-align:end; direction:ltr }
+.invoice-grid table th:nth-child(5){ width:110px; text-align:end }   /* «·÷—Ì»… */
+.invoice-grid table td:nth-child(5){ text-align:end; direction:ltr }
+.invoice-grid table th:nth-child(6){ width:140px; text-align:end }   /* «·≈Ã„«·Ì */
+.invoice-grid table td:nth-child(6){ text-align:end; direction:ltr }
+
+/* « Ã«Â «·√—ﬁ«„ œ«Œ· ÕﬁÊ· «·√⁄œ«œ/«·⁄„·«  („⁄ «·Õ›«Ÿ ⁄·Ï RTL ›Ì «·‰’Ê’) */
+.field input[type="number"],
+.field input[data-type="amount"],
+.field input.amount{
+  direction:ltr; text-align:end;
+}
+
+/* ‘—Ìÿ «·≈Ã„«·Ì«  «··«’ﬁ  ·ﬁ«∆Ì«: √Ì ﬂ ·… ›ÌÂ« #total ‰Ã⁄·Â« Sticky √”›· «·‘«‘… */
+.invoice-grid > div:has(#total){
+  position: sticky; bottom: 0; z-index: 20;
+  background: linear-gradient(to top, #ffffff, rgba(255,255,255,0.92));
+  border-top: 1px solid #e5e7eb; padding: 12px; border-radius: 12px 12px 0 0;
+  display:grid; grid-template-columns: 1fr auto; gap:12px; align-items:center;
+}
+.invoice-grid > div:has(#total) .totals-right{
+  display:flex; gap:16px; align-items:center;
+}
+.invoice-grid > div:has(#total) .total-label{ font-weight:700 }
+.invoice-grid > div:has(#total) .total-amount{ font-weight:800; font-size:1.1rem; direction:ltr }
+
+/* «” Ã«»… */
+@media (max-width:1024px){
+  .invoice-grid > div:has(#total){
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Stage 3: Dense mode, Sticky header, Zebra rows, Print A4 ===== */
+
+:root{
+  --inv-gap:14px;
+  --inv-radius:12px;
+  --inv-border:#e5e7eb;
+  --inv-muted:#f8fafc;
+}
+
+.invoice-grid{ gap:var(--inv-gap) }
+.items-card{ border-radius:var(--inv-radius); border:1px solid var(--inv-border) }
+
+/* Sticky thead + Zebra + Hover */
+.items-card thead th{ position:sticky; top:0; z-index:5; background:var(--inv-muted) }
+.items-card tbody tr:nth-child(odd){ background:#fcfdff }
+.items-card tbody tr:hover{ background:#f1f5f9 }
+
+/* √—ﬁ«„ »„Õ«–«… À«» … */
+.field input[type="number"],
+.items-card td:nth-child(4),
+.items-card td:nth-child(5),
+.items-card td:nth-child(6){
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* ≈»—«“ «·ÕﬁÊ·/«·ﬁÌ„ «·Œ«ÿ∆… */
+.bad-amount, .field input.is-invalid{
+  border-color:#ef4444 !important;
+  box-shadow:0 0 0 3px rgba(239,68,68,.08);
+}
+
+/* Ê÷⁄ „÷€¯ÿ  ·ﬁ«∆Ì ··‘«‘«  «·ﬁ’Ì—… √Ê ÌœÊÌ ⁄»— data-mode="dense" √Ê class="dense" */
+@media (max-height: 720px){
+  .dense .invoice-grid, .invoice-grid[data-mode="dense"]{ gap:8px }
+  .dense .field input, .invoice-grid[data-mode="dense"] .field input{ height:36px }
+  .dense .field textarea, .invoice-grid[data-mode="dense"] .field textarea{ min-height:72px }
+  .dense .items-card th, .dense .items-card td,
+  .invoice-grid[data-mode="dense"] .items-card th,
+  .invoice-grid[data-mode="dense"] .items-card td{ padding:8px 10px }
+}
+
+/* ÿ»«⁄… A4 «Õ —«›Ì… */
+@media print{
+  :root{ --inv-gap:8px }
+  body{ background:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact }
+  .no-print{ display:none !important }
+
+  /* Õ«ÊÌ… «·’›Õ… */
+  .invoice-page{ width:210mm; margin:0 auto }
+
+  /* «·‘»ﬂ… */
+  .invoice-grid{ grid-template-columns:repeat(12,1fr); column-gap:10px }
+
+  /* Ãœ«Ê·: —√” „ ﬂ——°  ›«œÌ  ﬁÿÌ⁄ «·’›Ê› */
+  .items-card{ border:1px solid #bbb !important }
+  .items-card table{ page-break-inside:auto }
+  .items-card thead{ display:table-header-group }
+  .items-card tfoot{ display:table-footer-group }
+  .items-card tr{ page-break-inside:avoid; page-break-after:auto }
+  .items-card thead th{ position:sticky; top:0 }
+
+  /* ÕﬁÊ· ≈œŒ«·  ıÿ»⁄ ﬂ‰’ */
+  input, select, textarea{
+    border:none !important; padding:0 !important; outline:0 !important; background:transparent !important;
+    box-shadow:none !important; resize:none !important;
+  }
+  input[type="checkbox"]{ appearance:none; border:1px solid #999; width:12px; height:12px }
+}
+
+/*  Õ”Ì‰ ‘—Ìÿ «·≈Ã„«·Ì«  «··«’ﬁ „‰ „—Õ·… 2 */
+.invoice-grid > div:has(#total){
+  box-shadow:0 -6px 12px rgba(0,0,0,.03);
+}
+
+/* ===== Stage 5: A4 / 80mm toggle ===== */
+/* Õ«ÊÌ… «·›« Ê—… */
+.invoice-page{ margin:0 auto }
+
+/* Ê÷⁄ 80mm (Õ—«—Ì) */
+.invoice-page.thermal{
+  width:80mm; max-width:80mm;
+  padding:0;
+}
+.invoice-page.thermal .invoice-grid{ gap:8px }
+.invoice-page.thermal .items-card th,.invoice-page.thermal .items-card td{ padding:8px 8px }
+.invoice-page.thermal .no-thermal{ display:none !important }
+
+/* ‘—Ìÿ √œÊ«  «·ÿ»«⁄… (ÌıÕﬁ‰ „‰ JS) */
+#print-toolbar{
+  position:fixed; inset:auto 16px 16px auto; z-index:9999;
+  display:flex; gap:8px; padding:8px; border:1px solid #e5e7eb; border-radius:10px; background:#fff;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+  font-family:system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+#print-toolbar button{
+  border:1px solid #e5e7eb; border-radius:8px; padding:6px 10px; cursor:pointer; background:#f8fafc
+}
+#print-toolbar button.active{ outline:2px solid #2563eb }
+@media print{ #print-toolbar{ display:none !important } }
+
+/* ===== Stage 5: A4 / 80mm toggle ===== */
+/* Õ«ÊÌ… «·›« Ê—… */
+.invoice-page{ margin:0 auto }
+
+/* Ê÷⁄ 80mm (Õ—«—Ì) */
+.invoice-page.thermal{
+  width:80mm; max-width:80mm;
+  padding:0;
+}
+.invoice-page.thermal .invoice-grid{ gap:8px }
+.invoice-page.thermal .items-card th,.invoice-page.thermal .items-card td{ padding:8px 8px }
+.invoice-page.thermal .no-thermal{ display:none !important }
+
+/* ‘—Ìÿ √œÊ«  «·ÿ»«⁄… (ÌıÕﬁ‰ „‰ JS) */
+#print-toolbar{
+  position:fixed; inset:auto 16px 16px auto; z-index:9999;
+  display:flex; gap:8px; padding:8px; border:1px solid #e5e7eb; border-radius:10px; background:#fff;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+  font-family:system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+#print-toolbar button{
+  border:1px solid #e5e7eb; border-radius:8px; padding:6px 10px; cursor:pointer; background:#f8fafc
+}
+#print-toolbar button.active{ outline:2px solid #2563eb }
+@media print{ #print-toolbar{ display:none !important } }
+
+/* ===== Stage 5: A4 / 80mm toggle ===== */
+.invoice-page{ margin:0 auto }
+
+/* Thermal 80mm */
+.invoice-page.thermal{
+  width:80mm; max-width:80mm;
+  padding:0;
+}
+.invoice-page.thermal .invoice-grid{ gap:8px }
+.invoice-page.thermal .items-card th,.invoice-page.thermal .items-card td{ padding:8px 8px }
+.invoice-page.thermal .no-thermal{ display:none !important }
+
+/* Toolbar (injected via JS) */
+#print-toolbar{
+  position:fixed; inset:auto 16px 16px auto; z-index:9999;
+  display:flex; gap:8px; padding:8px; border:1px solid #e5e7eb; border-radius:10px; background:#fff;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+  font-family:system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+#print-toolbar button{
+  border:1px solid #e5e7eb; border-radius:8px; padding:6px 10px; cursor:pointer; background:#f8fafc
+}
+#print-toolbar button.active{ outline:2px solid #2563eb }
+@media print{ #print-toolbar{ display:none !important } }
+
+/* ===== Stage 6: UX/Autosave/Validation ===== */
+#toast{
+  position:fixed; left:50%; bottom:24px; transform:translateX(-50%);
+  background:#111; color:#fff; padding:10px 14px; border-radius:10px; opacity:0; pointer-events:none;
+  transition:opacity .2s ease;
+  z-index:99999;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+}
+#toast.show{ opacity:1 }
+#toast.success{ background:#16a34a }
+#toast.error{ background:#dc2626 }
+
+.field input.is-invalid, .field select.is-invalid, .field textarea.is-invalid{
+  border-color:#ef4444 !important; box-shadow:0 0 0 3px rgba(239,68,68,.08)
+}
+#print-toolbar .sep{ width:1px; background:#e5e7eb; margin:0 4px }
+
+/* ===== Stage 7: status badge, paid stamp, dark mode ===== */
+.invoice-page{ position:relative }
+
+/* ‘«—… «·Õ«·… */
+.status-badge{
+  position:absolute; top:12px; left:12px;
+  padding:6px 10px; border-radius:999px; font-weight:700; font-size:.85rem;
+  background:#eef2ff; color:#3730a3; border:1px solid #c7d2fe
+}
+.status-badge.paid{ background:#ecfdf5; color:#065f46; border-color:#a7f3d0 }
+.status-badge.draft{ background:#f1f5f9; color:#0f172a; border-color:#e2e8f0 }
+.status-badge.issued{ background:#fff7ed; color:#9a3412; border-color:#fed7aa }
+.status-badge.cancelled{ background:#fef2f2; color:#7f1d1d; border-color:#fecaca }
+
+/* Œ „ „œ›Ê⁄… ›Ì «·ÿ»«⁄… */
+@media print{
+  .paid-stamp{
+    position:fixed; right:20mm; top:20mm; transform:rotate(-20deg);
+    font-size:24pt; font-weight:900; color:#065f46; opacity:.14;
+    border:6px solid #10b981; padding:8px 18px; border-radius:10px;
+  }
+}
+
+/* Ê÷⁄ œ«ﬂ‰ */
+.dark{
+  color-scheme: dark;
+  --bg:#0b1020; --panel:#11162a; --muted:#0e1426; --text:#e6e8ef; --border:#1f2a44;
+}
+.dark body, .dark .invoice-page{ background:var(--bg) !important; color:var(--text) }
+.dark .items-card{ background:var(--panel); border-color:var(--border) }
+.dark .items-card thead th{ background:var(--muted) }
+.dark #print-toolbar{ background:var(--panel); border-color:var(--border) }
+.dark #print-toolbar button{ background:var(--muted); color:var(--text); border-color:var(--border) }
+
+/* ‘—Ìÿ «·√œÊ« : √“—«— ’›Ê› */
+#print-toolbar .btn-icon{
+  display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border:1px solid #e5e7eb; border-radius:8px; background:#f8fafc; cursor:pointer;
+}
+#print-toolbar .sep{ width:1px; background:#e5e7eb; margin:0 4px }
+
+/* ===== Stage 7: status badge, paid stamp, dark mode ===== */
+.invoice-page{ position:relative }
+
+/* ‘«—… «·Õ«·… */
+.status-badge{
+  position:absolute; top:12px; left:12px;
+  padding:6px 10px; border-radius:999px; font-weight:700; font-size:.85rem;
+  background:#eef2ff; color:#3730a3; border:1px solid #c7d2fe
+}
+.status-badge.paid{ background:#ecfdf5; color:#065f46; border-color:#a7f3d0 }
+.status-badge.draft{ background:#f1f5f9; color:#0f172a; border-color:#e2e8f0 }
+.status-badge.issued{ background:#fff7ed; color:#9a3412; border-color:#fed7aa }
+.status-badge.cancelled{ background:#fef2f2; color:#7f1d1d; border-color:#fecaca }
+
+/* Œ „ „œ›Ê⁄… ›Ì «·ÿ»«⁄… */
+@media print{
+  .paid-stamp{
+    position:fixed; right:20mm; top:20mm; transform:rotate(-20deg);
+    font-size:24pt; font-weight:900; color:#065f46; opacity:.14;
+    border:6px solid #10b981; padding:8px 18px; border-radius:10px;
+  }
+}
+
+/* Ê÷⁄ œ«ﬂ‰ */
+.dark{
+  color-scheme: dark;
+  --bg:#0b1020; --panel:#11162a; --muted:#0e1426; --text:#e6e8ef; --border:#1f2a44;
+}
+.dark body, .dark .invoice-page{ background:var(--bg) !important; color:var(--text) }
+.dark .items-card{ background:var(--panel); border-color:var(--border) }
+.dark .items-card thead th{ background:var(--muted) }
+.dark #print-toolbar{ background:var(--panel); border-color:var(--border) }
+.dark #print-toolbar button{ background:var(--muted); color:var(--text); border-color:var(--border) }
+
+/* ‘—Ìÿ «·√œÊ« : √“—«— ’›Ê› */
+#print-toolbar .btn-icon{
+  display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border:1px solid #e5e7eb; border-radius:8px; background:#f8fafc; cursor:pointer;
+}
+#print-toolbar .sep{ width:1px; background:#e5e7eb; margin:0 4px }
+
+/* ===== Stage 8: signatures + amount-in-words + draft watermark ===== */
+
+/* Õ«ÊÌ… «· ÊﬁÌ⁄«  */
+.signatures{
+  display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px;
+}
+.signature-box{ border:1px dashed #94a3b8; border-radius:12px; padding:10px; min-height:110px; background:#fafafa }
+.signature-title{ font-weight:600; margin-bottom:6px; font-size:0.9rem; opacity:.8 }
+.signature-box img{ max-width:100%; max-height:90px; display:block }
+
+/* ”ÿ— «·„»·€ »«·Õ—Ê› */
+.amount-in-words{
+  margin-top:10px; font-size:.95rem; opacity:.85
+}
+
+/* ‰«›–… «· ÊﬁÌ⁄ */
+#sign-modal{
+  position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:10000; display:none; align-items:center; justify-content:center;
+}
+#sign-modal .panel{
+  background:#fff; padding:14px; border-radius:12px; width:min(95vw, 520px);
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+#sign-modal canvas{ width:100%; height:260px; border:1px solid #e5e7eb; border-radius:12px; display:block; background:#fff }
+#sign-modal .actions{ display:flex; gap:8px; justify-content:flex-end; margin-top:8px }
+#sign-modal button{ border:1px solid #e5e7eb; border-radius:8px; padding:6px 10px; background:#f8fafc; cursor:pointer }
+
+@media print{
+  #sign-modal, #print-toolbar{ display:none !important }
+  .watermark{ position:fixed; inset:0; pointer-events:none; display:flex; align-items:center; justify-content:center; }
+  .watermark span{
+    transform:rotate(-24deg); font-size:70pt; font-weight:900; color:#0f172a; opacity:.07; border:8px solid #64748b;
+    padding:18px 30px; border-radius:14px;
+  }
+}

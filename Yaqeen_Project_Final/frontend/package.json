@@ -1,0 +1,46 @@
+{
+    "name": "yaqeen-frontend",
+    "version": "1.0.0",
+    "description": "ط¨ط±ظ†ط§ظ…ط¬ ظٹظ‚ظٹظ† ط§ظ„ظ…ط­ط§ط³ط¨ظٹ ط§ظ„ط°ظƒظٹ",
+    "main": "src/index.js",
+    "dependencies": {
+        "axios": "^1.3.0",
+        "date-fns": "^4.1.0",
+        "file-saver": "^2.0.5",
+        "jsdom": "^27.0.0",
+        "jszip": "^3.10.1",
+        "lucide-react": "^0.542.0",
+        "qrcode": "^1.5.4",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "react-hook-form": "^7.62.0",
+        "react-router-dom": "^6.30.1",
+        "recharts": "^3.2.1",
+        "zustand": "^5.0.8"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.0",
+        "http-proxy-middleware": "^2.0.9",
+        "postcss": "^8.4.0",
+        "react-scripts": "^5.0.1",
+        "tailwindcss": "^3.2.0"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "scripts": {
+        "test": "react-scripts test",
+        "build": "react-scripts build",
+        "dev": "react-scripts start",
+        "start": "react-scripts start"
+    }
+}

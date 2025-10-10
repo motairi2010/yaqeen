@@ -1,0 +1,726 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap");
+
+/* ===== Theme Tokens ===== */
+:root { direction: rtl; }
+[data-theme="dark"]{
+  --bg:#0f172a; --panel:#0b1220; --card:#111827; --border:#1f2937;
+  --text:#e2e8f0; --muted:#94a3b8;
+  --brand:#1fb77a; --accent:#22b6f0; --danger:#ef4444; --warning:#f59e0b; --ok:#10b981;
+}
+[data-theme="light"]{
+  --bg:#f8fafc; --panel:#ffffff; --card:#ffffff; --border:#e2e8f0;
+  --text:#0f172a; --muted:#475569;
+  --brand:#1fb77a; --accent:#22b6f0; --danger:#ef4444; --warning:#f59e0b; --ok:#10b981;
+}
+
+/* ===== Base ===== */
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Tajawal",system-ui,-apple-system,Segoe UI,Roboto,Arial}
+a{color:inherit;text-decoration:none}
+
+.container{display:flex;min-height:100vh;width:100%}
+.sidebar{width:260px;background:var(--card);border-left:1px solid var(--border);display:flex;flex-direction:column;position:sticky;top:0;height:100vh}
+.brand{padding:20px;font-weight:700;font-size:20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.brand .dot{width:10px;height:10px;border-radius:999px;background:var(--brand);display:inline-block}
+.nav{padding:12px;display:flex;flex-direction:column;gap:6px;overflow:auto}
+.nav a{padding:12px 14px;border-radius:12px;color:var(--muted);border:1px solid transparent}
+.nav a.active,.nav a:hover{color:var(--text);background:linear-gradient(90deg,rgba(31,183,122,.15),rgba(34,182,240,.12));border-color:rgba(148,163,184,.15)}
+.main{flex:1;display:flex;flex-direction:column;min-width:0}
+
+.topbar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.search{display:flex;gap:8px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:8px 12px;min-width:320px}
+.search input{background:transparent;border:none;outline:none;color:var(--text);width:100%}
+
+.content{padding:20px;display:flex;flex-direction:column;gap:20px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px}
+.kpi{display:flex;flex-direction:column;gap:6px}
+.kpi .label{color:var(--muted);font-size:14px}
+.kpi .value{font-size:28px;font-weight:700}
+.kpi .delta{font-size:13px}
+
+.badge{font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
+.table{width:100%;border-collapse:collapse;font-size:14px}
+.table th,.table td{padding:10px 8px;border-bottom:1px solid var(--border);text-align:right}
+.table th{color:var(--muted);font-weight:500}
+.actions{display:flex;gap:8px}
+.btn{padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:var(--panel);color:var(--text);cursor:pointer}
+.btn.primary{background:linear-gradient(90deg,var(--brand),var(--accent));border-color:transparent}
+
+/* ===== Brand images & theme behavior ===== */
+.brand-img{image-rendering:auto; display:inline-block; vertical-align:middle}
+.brand-img--mono{filter: grayscale(1) brightness(2) contrast(1.1) saturate(0);} /* يستخدم عند غياب نسخة بيضاء */
+
+
+
+/* ===== Responsive ===== */
+@media (max-width:1100px){.sidebar{display:none}.grid{grid-template-columns:repeat(6,1fr)}}
+@media (max-width:700px){.grid{grid-template-columns:repeat(2,1fr)}}
+
+.brand{justify-content:center}
+
+/* === Yaqeen: Logo x5 === */
+.brand{ padding:28px; min-height:220px; display:flex; align-items:center; justify-content:center }
+.brand img{ max-width:100%; height:auto; object-fit:contain }
+
+/* حجم الشعار حسب الثيم */
+[data-theme="light"] .brand img{ height:180px; }  /* كان ~36px → الآن 180px (x5) */
+[data-theme="dark"]  .brand img{ height:140px; filter: invert(1) brightness(1.2) } /* كان ~28px → الآن 140px (x5) */
+/* === Yaqeen: Logo x5 === */
+.brand{ padding:28px; min-height:220px; display:flex; align-items:center; justify-content:center }
+.brand img{ max-width:100%; height:auto; object-fit:contain }
+
+/* حجم الشعار حسب الثيم */
+[data-theme="light"] .brand img{ height:180px; }  /* كان ~36px → الآن 180px (x5) */
+[data-theme="dark"]  .brand img{ height:140px; filter: invert(1) brightness(1.2) } /* كان ~28px → الآن 140px (x5) */
+/* === Yaqeen Logo x6 (forced) === */
+.brand{
+  padding: 32px;
+  min-height: 240px;
+  display:flex; align-items:center; justify-content:center;
+}
+.brand .logo-img, .brand img{
+  height: 216px !important; /* كان ~36px → الآن ×6 */
+  width: auto !important;
+  max-width: 100% !important;
+  object-fit: contain;
+}
+/* ثيم داكن: نعكس الألوان فقط */
+[data-theme="dark"] .brand .logo-img,
+[data-theme="dark"] .brand img{
+  filter: invert(1) brightness(1.15);
+}
+
+/* أعرض السايدبار أعرض قليلاً ليأخذ الشعار راحته */
+.sidebar{ width: 340px !important; }
+/* Paybar (طرق الدفع + زر طباعة) */
+.paybar{display:flex;gap:12px;align-items:center;justify-content:space-between;background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:12px 14px;position:sticky;bottom:12px}
+.paybar .methods{display:flex;gap:8px;flex-wrap:wrap}
+.paybar .btn.method{background:var(--card)}
+.paybar .btn.method.active{outline:2px solid var(--accent)}
+/* سياسة: إخفاء زر البند اليدوي عندما تمنع السياسة */
+body[data-policy-manual="0"] .btn-manual{ display:none !important; }
+/* ========== Forms & Buttons — Unified Yaqeen look ========== */
+
+/* شبكة نماذج مريحة */
+.form-grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:12px }
+.form-grid .col-12{ grid-column:span 12 }
+.form-grid .col-6{  grid-column:span 6  }
+.form-grid .col-4{  grid-column:span 4  }
+.form-grid .col-3{  grid-column:span 3  }
+
+/* الحقول داخل أي بطاقة .card أو أي نموذج .invoice-form أو أي form عام */
+.card input[type="text"],
+.card input[type="number"],
+.card input[type="date"],
+.card input[type="time"],
+.card input[type="email"],
+.card input[type="search"],
+.card select,
+.card textarea,
+.invoice-form input[type="text"],
+.invoice-form input[type="number"],
+.invoice-form input[type="date"],
+.invoice-form input[type="time"],
+.invoice-form input[type="email"],
+.invoice-form input[type="search"],
+.invoice-form select,
+.invoice-form textarea,
+form input[type="text"],
+form input[type="number"],
+form input[type="date"],
+form input[type="time"],
+form input[type="email"],
+form input[type="search"],
+form select,
+form textarea{
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 10px;
+  height: 38px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card textarea,
+.invoice-form textarea,
+form textarea{ min-height: 90px; }
+
+/* تركيز الحقول */
+.card input:focus, .card select:focus, .card textarea:focus,
+.invoice-form input:focus, .invoice-form select:focus, .invoice-form textarea:focus,
+form input:focus, form select:focus, form textarea:focus{
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 15%, transparent);
+}
+
+/* الأزرار الموحّدة */
+.card .btn, .invoice-form .btn, form .btn, button{
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 8px 14px;
+  color: var(--text);
+  cursor: pointer;
+  transition: .2s ease;
+}
+.card .btn:hover, .invoice-form .btn:hover, form .btn:hover, button:hover{
+  transform: translateY(-1px);
+  border-color: var(--primary);
+}
+.btn.primary{ background: var(--primary); color: white; border-color: var(--primary) }
+.btn.danger{  background: #dc3545; color: white; border-color:#dc3545 }
+
+/* عناوين القسم */
+.section-title{
+  font-weight:700; font-size:18px; margin: 8px 0 6px 0;
+}
+
+/* صف أزرار */
+.actions{ display:flex; gap:10px; align-items:center; flex-wrap:wrap }
+/* === INVOICE-UI-V2 === */
+.invoice-card{
+  background:var(--card,#fff);
+  border:1px solid var(--border,#e7e7e7);
+  border-radius:16px; padding:16px; margin:12px 0;
+  box-shadow:0 4px 20px rgba(0,0,0,.04)
+}
+.invoice-lines{ width:100%; border-collapse:separate; border-spacing:0 10px; }
+.invoice-lines thead th{
+  font-weight:600; font-size:13px; color:var(--muted,#667);
+  border-bottom:1px solid var(--border,#e7e7e7); padding:10px
+}
+.invoice-lines td{ padding:6px 8px; }
+
+.pill-input{
+  width:100%; height:36px; padding:6px 10px;
+  border:1px solid var(--border,#DFE3E8);
+  border-radius:12px; outline:none;
+  background:var(--input-bg,#fff); color:var(--text,#111);
+}
+.pill-input:focus{ box-shadow:0 0 0 3px rgba(59,130,246,.15); border-color:#5b9bff; }
+
+.btn{ height:36px; border:none; cursor:pointer; border-radius:10px; padding:0 14px; }
+.btn.pill{ border-radius:999px; background:#f3f4f6; color:#111 }
+.btn.pill:hover{ background:#e9eaee }
+.btn.primary{ background:#2563eb; color:#fff }
+.btn.primary:hover{ background:#1e50c7 }
+.btn.danger{ background:#fee2e2; color:#991b1b }
+
+.invoice-actions{ display:flex; gap:10px; justify-content:flex-start; margin:12px 0 6px }
+.calc-pills{ display:flex; gap:10px; flex-wrap:wrap; margin-top:8px }
+.chip{
+  display:inline-flex; align-items:center; gap:8px;
+  background:#f5f7fb; color:#0b1736; border:1px solid #e8ecf7;
+  padding:6px 10px; border-radius:999px; font-size:12px
+}
+.invoice-note{ color:#667085; background:#f8fafc; border:1px dashed #dbe2ea; padding:10px; border-radius:10px }
+/* === INVOICE-PAGE PILL UI === */
+.invoice-page .section,
+.invoice-page .card{
+  background:var(--card,#fff);
+  border:1px solid var(--border,#E5E7EB);
+  border-radius:16px;
+  padding:16px; margin:12px 0;
+  box-shadow:0 4px 20px rgba(0,0,0,.04);
+}
+.invoice-page input[type="text"],
+.invoice-page input[type="number"],
+.invoice-page input[type="date"],
+.invoice-page input[type="email"],
+.invoice-page select,
+.invoice-page textarea{
+  width:100%;
+  height:40px;
+  padding:8px 12px;
+  border:1px solid var(--border,#DFE3E8);
+  border-radius:12px;
+  background:var(--input-bg,#fff);
+  color:var(--text,#111);
+  outline:none;
+}
+.invoice-page textarea{ min-height:90px; }
+.invoice-page input:focus,
+.invoice-page select:focus,
+.invoice-page textarea:focus{
+  border-color:#5b9bff;
+  box-shadow:0 0 0 3px rgba(59,130,246,.15);
+}
+
+.invoice-page button{
+  height:38px; padding:0 14px; cursor:pointer;
+  border:1px solid var(--border,#DFE3E8);
+  background:#f3f4f6; color:#111;
+  border-radius:999px;
+}
+.invoice-page button.primary{ background:#2563eb; color:#fff; border-color:#2563eb; }
+.invoice-page button.danger{ background:#fee2e2; color:#991b1b; border-color:#fecaca; }
+
+.invoice-page .invoice-lines{ width:100%; border-collapse:separate; border-spacing:0 10px; }
+.invoice-page .invoice-lines thead th{
+  font-weight:600; font-size:13px; color:var(--muted,#667);
+  border-bottom:1px solid var(--border,#E5E7EB); padding:10px;
+}
+.invoice-page .invoice-lines td{ padding:6px 8px; }
+
+.invoice-page .calc-pills{ display:flex; gap:10px; flex-wrap:wrap; margin-top:8px }
+.invoice-page .chip{
+  display:inline-flex; align-items:center; gap:8px;
+  background:#f5f7fb; color:#0b1736; border:1px solid #e8ecf7;
+  padding:6px 10px; border-radius:999px; font-size:12px;
+}
+/* === Invoice page unified look === */
+.invoice-page{
+  --border:#e5e7eb; --card:#fff; --text:#111827; --muted:#6b7280; --bg:#f7f9fc;
+}
+.invoice-page .card{
+  background:var(--card); border:1px solid var(--border);
+  border-radius:16px; padding:16px; box-shadow:0 1px 2px rgba(0,0,0,.03);
+}
+.invoice-page h2, .invoice-page h3{ margin:0 0 10px 0; }
+.invoice-page table{ width:100%; border-collapse:separate; border-spacing:0 8px; }
+
+.invoice-page .invoice-lines th{
+  font-size:14px; font-weight:600; color:var(--muted); text-align:right; padding:6px 8px;
+}
+.invoice-page .invoice-lines td{ padding:4px 8px; }
+
+/* حقول بشكل pill */
+.invoice-page input:not([type="checkbox"]):not([type="radio"]),
+.invoice-page select, .invoice-page textarea, .invoice-page .pill-input{
+  width:100%; border:1px solid var(--border); background:#fff; color:var(--text);
+  border-radius:9999px; padding:8px 12px; outline:none;
+}
+
+/* أزرار موحّدة */
+.invoice-page .btn{
+  border:1px solid var(--border); background:#fff; color:var(--text);
+  border-radius:9999px; padding:8px 14px; cursor:pointer; transition:transform .05s ease;
+}
+.invoice-page .btn:hover{ transform:translateY(-1px); }
+.invoice-page .btn.primary{ background:#1d4ed8; color:#fff; border-color:#1d4ed8; }
+.invoice-page .btn.danger{ background:#ef4444; color:#fff; border-color:#ef4444; }
+
+/* شرائح المجموع */
+.invoice-page .chip{
+  display:inline-block; border:1px solid var(--border); border-radius:9999px;
+  padding:6px 10px; margin-inline-end:8px; color:var(--muted); background:#fff;
+}
+/* === Unified Invoice UI (scoped to body.invoice-body) === */
+.invoice-body{
+  --border:#e5e7eb; --text:#111827; --muted:#6b7280; --card:#fff; --bg:#f7f9fc;
+}
+
+/* حقول بشكل pill */
+.invoice-body :where(input:not([type="checkbox"]):not([type="radio"]), select, textarea){
+  border:1px solid var(--border) !important;
+  background:#fff !important; color:var(--text) !important;
+  border-radius:9999px !important; padding:8px 12px !important;
+  outline:none; box-shadow:none !important;
+}
+
+/* أزرار */
+.invoice-body :where(button,.btn){
+  border:1px solid var(--border); background:#fff; color:var(--text);
+  border-radius:9999px; padding:8px 14px; cursor:pointer;
+  transition:transform .06s ease;
+}
+.invoice-body :where(button,.btn):hover{ transform:translateY(-1px); }
+.invoice-body :where(.btn.primary){ background:#1d4ed8; color:#fff; border-color:#1d4ed8; }
+.invoice-body :where(.btn.danger){ background:#ef4444; color:#fff; border-color:#ef4444; }
+
+/* جداول الأسطر */
+.invoice-body table{ width:100%; border-collapse:separate; border-spacing:0 8px; }
+.invoice-body th{
+  text-align:right; padding:6px 8px; color:var(--muted); font-size:14px; font-weight:600;
+}
+.invoice-body td{ padding:4px 8px; }
+
+/* شرائح المجموع */
+.invoice-body .chip{
+  display:inline-block; border:1px solid var(--border); border-radius:9999px;
+  padding:6px 10px; margin-inline-end:8px; color:var(--muted); background:#fff;
+}
+
+/* كروت اختيارية إن وُجدت */
+.invoice-body .card{
+  background:var(--card); border:1px solid var(--border);
+  border-radius:16px; padding:16px; box-shadow:0 1px 2px rgba(0,0,0,.03);
+}
+/* === Invoice page pill inputs (scope: .page-invoices) === */
+.page-invoices input[type="text"],
+.page-invoices input[type="number"],
+.page-invoices input[type="date"],
+.page-invoices input[type="time"],
+.page-invoices input[type="email"],
+.page-invoices input[type="tel"],
+.page-invoices select,
+.page-invoices textarea{
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 9999px !important;   /* شكل الحبة */
+  border: 1px solid var(--border, #dbe3ef) !important;
+  background: var(--panel, #fff) !important;
+  color: var(--text, #0f172a) !important;
+  padding: 10px 14px !important;
+  line-height: 1.3;
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.02),
+    0 1px 2px rgba(15,23,42,.06);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.page-invoices input::placeholder,
+.page-invoices textarea::placeholder{
+  color: #6b7280; opacity: .85;
+}
+
+.page-invoices input:focus,
+.page-invoices select:focus,
+.page-invoices textarea:focus{
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59,130,246,.18) !important;
+  outline: none;
+}
+
+.page-invoices button,
+.page-invoices .btn{
+  border-radius: 9999px !important;
+  padding: 9px 14px !important;
+  border: 1px solid var(--border, #dbe3ef);
+  background: var(--panel, #fff);
+  color: var(--text, #0f172a);
+}
+
+.page-invoices .btn.primary,
+.page-invoices button.primary{
+  background: #2563eb !important;
+  color: #fff !important;
+  border-color: #1e40af !important;
+}
+
+.page-invoices .btn:disabled,
+.page-invoices button:disabled,
+.page-invoices input:disabled,
+.page-invoices select:disabled{
+  opacity: .6; cursor: not-allowed;
+}
+/* ======================================================== */
+/* === Invoice page pill inputs (scope: .page-invoices) === */
+.page-invoices input:not([type="checkbox"]):not([type="radio"]),
+.page-invoices select,
+.page-invoices textarea{
+  appearance:none; -webkit-appearance:none;
+  border-radius:9999px !important;
+  border:1px solid var(--border, #dbe3ef) !important;
+  background:var(--panel, #fff) !important;
+  color:var(--text, #0f172a) !important;
+  padding:10px 14px !important;
+  line-height:1.3;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.02), 0 1px 2px rgba(15,23,42,.06);
+  transition:border-color .2s, box-shadow .2s;
+}
+.page-invoices input::placeholder, .page-invoices textarea::placeholder{ color:#6b7280; opacity:.85; }
+.page-invoices input:focus, .page-invoices select:focus, .page-invoices textarea:focus{
+  border-color:#3b82f6 !important; box-shadow:0 0 0 3px rgba(59,130,246,.18) !important; outline:none;
+}
+.page-invoices button, .page-invoices .btn{
+  border-radius:9999px !important; padding:9px 14px !important;
+  border:1px solid var(--border, #dbe3ef); background:var(--panel, #fff); color:var(--text, #0f172a);
+}
+.page-invoices .btn.primary, .page-invoices button.primary{
+  background:#2563eb !important; color:#fff !important; border-color:#1e40af !important;
+}
+.page-invoices .btn:disabled, .page-invoices button:disabled,
+.page-invoices input:disabled, .page-invoices select:disabled{ opacity:.6; cursor:not-allowed; }
+/* ======================================================== */
+/* === Invoice page pill look (scoped to body.page-invoices) === */
+body.page-invoices input:not([type="checkbox"]):not([type="radio"]),
+body.page-invoices select,
+body.page-invoices textarea{
+  appearance:none; -webkit-appearance:none;
+  border-radius:9999px !important;
+  border:1px solid var(--border, #dbe3ef) !important;
+  background:var(--panel, #fff) !important;
+  color:var(--text, #0f172a) !important;
+  padding:10px 14px !important;
+  line-height:1.3;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.02), 0 1px 2px rgba(15,23,42,.06);
+  transition:border-color .2s, box-shadow .2s;
+}
+body.page-invoices input::placeholder,
+body.page-invoices textarea::placeholder{ color:#6b7280; opacity:.85; }
+
+body.page-invoices input:focus,
+body.page-invoices select:focus,
+body.page-invoices textarea:focus{
+  border-color:#3b82f6 !important;
+  box-shadow:0 0 0 3px rgba(59,130,246,.18) !important;
+  outline:none;
+}
+
+body.page-invoices button,
+body.page-invoices .btn{
+  border-radius:9999px !important;
+  padding:9px 14px !important;
+  border:1px solid var(--border, #dbe3ef);
+  background:var(--panel, #fff);
+  color:var(--text, #0f172a);
+}
+body.page-invoices .btn.primary,
+body.page-invoices button.primary{
+  background:#2563eb !important;
+  color:#fff !important;
+  border-color:#1e40af !important;
+}
+/* ============================================================ */
+/* === Invoice pill look (scoped) =============================== */
+.invoice-card input:not([type="checkbox"]):not([type="radio"]),
+.invoice-card select,
+.invoice-card textarea,
+.invoice-lines input:not([type="checkbox"]):not([type="radio"]),
+.invoice-lines select,
+.invoice-lines textarea{
+  appearance:none; -webkit-appearance:none;
+  border-radius:9999px !important;
+  border:1px solid var(--border, #dbe3ef) !important;
+  background:var(--panel, #fff) !important;
+  color:var(--text, #0f172a) !important;
+  padding:10px 14px !important;
+  line-height:1.3;
+  height: 40px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.02), 0 1px 2px rgba(15,23,42,.06);
+  transition:border-color .2s, box-shadow .2s;
+}
+
+.invoice-card input::placeholder,
+.invoice-card textarea::placeholder,
+.invoice-lines input::placeholder,
+.invoice-lines textarea::placeholder{
+  color:#6b7280; opacity:.85;
+}
+
+.invoice-card input:focus,
+.invoice-card select:focus,
+.invoice-card textarea:focus,
+.invoice-lines input:focus,
+.invoice-lines select:focus,
+.invoice-lines textarea:focus{
+  border-color:#3b82f6 !important;
+  box-shadow:0 0 0 3px rgba(59,130,246,.18) !important;
+  outline:none;
+}
+
+.invoice-card .btn,
+.invoice-card button{
+  border-radius:9999px !important;
+  padding:9px 14px !important;
+  border:1px solid var(--border, #dbe3ef);
+  background:var(--panel, #fff);
+  color:var(--text, #0f172a);
+}
+.invoice-card .btn.primary,
+.invoice-card button.primary{
+  background:#2563eb !important;
+  color:#fff !important;
+  border-color:#1e40af !important;
+}
+/* =============================================================== */
+/* === Global Pill Inputs & Buttons (force) =============================== */
+#root :where(input:not([type="checkbox"]):not([type="radio"]), select, textarea){
+  appearance:none; -webkit-appearance:none;
+  border-radius:9999px !important;
+  height:40px !important;
+  padding:10px 14px !important;
+  background:var(--panel, #fff) !important;
+  color:var(--text, #0f172a) !important;
+  border:1px solid var(--border, #dbe3ef) !important;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.02), 0 1px 2px rgba(15,23,42,.06) !important;
+  transition:border-color .2s, box-shadow .2s;
+}
+#root input::placeholder, #root textarea::placeholder{
+  color:#6b7280; opacity:.9;
+}
+#root :where(input,select,textarea):focus{
+  border-color:#3b82f6 !important;
+  box-shadow:0 0 0 3px rgba(59,130,246,.18) !important;
+  outline:none;
+}
+
+/* أزرار موحّدة */
+#root button, #root .btn{
+  border-radius:9999px !important;
+  padding:9px 14px !important;
+  border:1px solid var(--border, #dbe3ef) !important;
+  background:var(--panel, #fff) !important;
+  color:var(--text, #0f172a) !important;
+}
+#root button.primary, #root .btn.primary{
+  background:#2563eb !important;
+  color:#fff !important;
+  border-color:#1e40af !important;
+}
+
+/* ثيم داكن */
+[data-theme="dark"] #root :where(input:not([type="checkbox"]):not([type="radio"]), select, textarea){
+  background:#0b1220 !important;
+  color:#e5e7eb !important;
+  border-color:#334155 !important;
+}
+/* ========= Invoices page, tidy pill layout ========= */
+body.page-invoices{
+  --pill-bg: #fff;
+  --pill-br: #e6eef9;
+  --pill-shadow: 0 1px 2px rgba(15,23,42,.06);
+  --pill-focus: 0 0 0 3px rgba(59,130,246,.18);
+  --muted: #6b7280;
+}
+
+/* بطاقات/جداول عامة */
+body.page-invoices .invoice-card{
+  background:#fff;border:1px solid #eef2f7;border-radius:16px;
+  padding:16px; box-shadow:0 1px 2px rgba(15,23,42,.04);
+}
+
+/* حبوب الإدخال (inputs/select/textarea) */
+body.page-invoices input:not([type="checkbox"]):not([type="radio"]),
+body.page-invoices select,
+body.page-invoices textarea{
+  appearance:none;-webkit-appearance:none;
+  width:100%;
+  background:var(--pill-bg) !important;
+  border:1px solid var(--pill-br) !important;
+  border-radius:9999px !important;
+  padding:10px 14px !important;
+  line-height:1.3;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.02), var(--pill-shadow);
+  color:var(--text,#0f172a) !important;
+  transition:border-color .2s, box-shadow .2s;
+}
+body.page-invoices input::placeholder,
+body.page-invoices textarea::placeholder{ color:var(--muted); opacity:.9; }
+body.page-invoices input:focus,
+body.page-invoices select:focus,
+body.page-invoices textarea:focus{
+  border-color:#3b82f6 !important; box-shadow:var(--pill-focus) !important; outline:none;
+}
+
+/* أزرار */
+body.page-invoices .btn, body.page-invoices button{
+  border-radius:9999px !important; border:1px solid var(--pill-br);
+  background:#fff; padding:9px 14px !important; color:#0f172a;
+}
+body.page-invoices .btn.primary, body.page-invoices button.primary{
+  background:#2563eb !important; color:#fff !important; border-color:#1e40af !important;
+}
+
+/* جدول أسطر الفاتورة (بدون تغيير JSX): عرض/محاذاة/تباعد */
+body.page-invoices table{ width:100%; border-collapse:separate; border-spacing:0 10px; }
+body.page-invoices thead th{
+  font-weight:600; font-size:13px; color:#334155; background:#f8fbff;
+  border:1px solid #eef2f7; padding:10px 12px; border-radius:10px;
+}
+body.page-invoices tbody td{
+  background:#fff; border:1px solid #eef2f7; padding:8px 10px;
+}
+body.page-invoices tbody tr{ box-shadow:0 1px 1px rgba(15,23,42,.03); border-radius:12px; }
+
+/* توزيع الأعمدة (بدون لمس JSX) */
+body.page-invoices thead th:nth-child(1),
+body.page-invoices tbody td:nth-child(1){ width:28%; }
+body.page-invoices thead th:nth-child(2),
+body.page-invoices tbody td:nth-child(2){ width:22%; }
+body.page-invoices thead th:nth-child(3),
+body.page-invoices tbody td:nth-child(3){ width:12%; }
+body.page-invoices thead th:nth-child(4),
+body.page-invoices tbody td:nth-child(4){ width:18%; }
+body.page-invoices thead th:nth-child(5),
+body.page-invoices tbody td:nth-child(5){ width:16%; }
+body.page-invoices thead th:nth-child(6),
+body.page-invoices tbody td:nth-child(6){ width:4%;  text-align:center; }
+
+/* شريط الملاحظات/الباركود الطويل */
+body.page-invoices .invoice-wide-row{ margin-top:8px; }
+body.page-invoices .invoice-wide-row input,
+body.page-invoices .invoice-wide-row textarea{ border-radius:9999px !important; }
+
+/* الشيبس (الملخّصات) + الأزرار: صف مرتب يمين/يسار */
+body.page-invoices .calc-pills{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+body.page-invoices .chip{
+  display:inline-flex; align-items:center; gap:6px;
+  border:1px solid var(--pill-br); background:#fff; padding:8px 12px;
+  border-radius:9999px; font-size:13px; color:#0f172a;
+}
+body.page-invoices .invoice-actions{
+  display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end;
+}
+/* ==================================================== */
+/* ===== Force pill inputs app-wide (يلائم شكل الباركود) ===== */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea{
+  appearance:none;-webkit-appearance:none;
+  background:#fff !important;
+  border:1px solid #e6eef9 !important;
+  border-radius:9999px !important;
+  padding:10px 14px !important;
+  line-height:1.3;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.02), 0 1px 2px rgba(15,23,42,.06) !important;
+}
+input::placeholder, textarea::placeholder{ color:#6b7280;opacity:.9; }
+input:focus, select:focus, textarea:focus{
+  border-color:#3b82f6 !important; box-shadow:0 0 0 3px rgba(59,130,246,.18) !important; outline:none;
+}
+
+/* ===== ترتيب صف البنود كشبكة أعمدة (6 أعمدة) =====
+   يعمل على أي جدول أسطر فيه 6 خلايا (باركود/الصنف/الكمية/السعر/الإجمالي/أوامر) */
+table:has(td:nth-child(6)),
+table:has(th:nth-child(6)){
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0 10px; /* مسافة رأسية بين الصفوف */
+}
+table:has(td:nth-child(6)) tbody tr,
+table:has(th:nth-child(6)) thead tr{
+  display:grid;
+  grid-template-columns: 28% 22% 12% 18% 16% 4%;
+  column-gap:12px;
+  align-items:center;
+}
+table:has(td:nth-child(6)) td,
+table:has(th:nth-child(6)) th{
+  border:none !important;
+  background:transparent !important;
+  padding:0 !important;
+}
+
+/* ===== شريط الملاحظات/الباركود الطويل (إن وُجد) ===== */
+.invoice-wide-row input,
+.invoice-wide-row textarea{ border-radius:9999px !important; }
+
+/* ===== الشيبس (ملخصات) والأزرار في صف مرتب ===== */
+.calc-pills, .invoice-summary{
+  display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end;
+}
+.calc-pills .chip, .invoice-summary > *{
+  border:1px solid #e6eef9; background:#fff; padding:8px 12px; border-radius:9999px;
+  font-size:13px; color:#0f172a;
+}
+
+/* ===== الأزرار شكل pill موحّد ===== */
+button, .btn{
+  border-radius:9999px !important;
+  border:1px solid #e6eef9 !important;
+  background:#fff; color:#0f172a;
+  padding:9px 14px !important;
+}
+button.primary, .btn.primary{
+  background:#2563eb !important; color:#fff !important; border-color:#1e40af !important;
+}

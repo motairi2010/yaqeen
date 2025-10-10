@@ -1,0 +1,16 @@
+﻿/* src/styles/riyal.runtime.css (fixed) */
+@font-face {
+  font-family: "SaudiRiyal";
+  src: url("../assets/fonts/Saudi-Riyal.ttf") format("truetype");
+  font-display: swap;
+}
+.RiyalSymbol-font {
+  font-family: "SaudiRiyal", inherit !important;
+  font-feature-settings: "liga" 1, "rlig" 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.RiyalSymbol-font.nowrap { white-space: nowrap; }
+.RiyalSymbol-symbol { font-size: 0 !important; }
+.RiyalSymbol-symbol::after { content: "الريال"; font-size: inherit; }
+.RiyalSymbol-ry { }

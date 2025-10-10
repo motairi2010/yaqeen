@@ -1,0 +1,35 @@
+﻿/* src/styles/currency-safe.css */
+/* لا تغيّروا ترتيب الخطوط هنا بدون سبب، الهدف الاستقرار لا “الجمال” */
+.amount-RiyalSymbolToken{
+  direction: rtl;
+  unicode-bidi: isolate;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+/* الأرقام: خط ثابت وهادئ. إن وُجد دعم tabular-nums يستعمله */
+.amount-RiyalSymbolToken .num{
+  font-family: Tahoma, Arial, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+/* الرمز فقط: خط رموز يملك U+FDFC غالباً */
+.amount-RiyalSymbolToken .sym{
+  font-family: "Segoe UI Symbol","Arial Unicode MS", Tahoma, Arial, sans-serif;
+}
+
+/* لو تحب تضبط حجم الرمز قليلاً بدون لمس الرقم */
+.amount-RiyalSymbolToken .sym{ font-size: .95em; vertical-align: baseline; }
+
+/* RiyalSymbolToken symbol support */
+:root{
+  --RiyalSymbolToken-font: "RialGlyph", "Noto Sans Arabic","Segoe UI","Segoe UI Symbol","Tahoma","Arial Unicode MS",system-ui,sans-serif;
+}
+.RiyalSymbolToken-symbol,
+.money .symbol{
+  font-family: var(--RiyalSymbolToken-font);
+  font-weight: 700;
+}
+
+
+

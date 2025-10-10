@@ -1,0 +1,11 @@
+﻿@font-face{
+  font-family: "RialGlyph";
+  src: url("../assets/fonts/NotoSanRiyalSymbolTokenabicVF.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  /* هذا الخط يُستخدم فقط للجلوف U+FDFC (رمز ﷼) */
+  unicode-range: U+FDFC;
+}
+
+

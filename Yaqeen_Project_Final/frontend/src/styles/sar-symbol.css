@@ -1,0 +1,296 @@
+﻿:root{
+  --RiyalSymbolToken-font: "Noto Sans Arabic","Segoe UI","Segoe UI Symbol","Tahoma","Arial Unicode MS",system-ui,sans-serif;
+  --RiyalSymbolToken-size: 1em;
+  --RiyalSymbolToken-gap: .35em;
+  --RiyalSymbolToken-url: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMTI0LjE0IDEyNTYuMzkiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6ICMyMzFmMjA7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgPC9kZWZzPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTY5OS42MiwxMTEzLjAyaDBjLTIwLjA2LDQ0LjQ4LTMzLjMyLDkyLjc1LTM4LjQsMTQzLjM3bDQyNC41MS05MC4yNGMyMC4wNi00NC40NywzMy4zMS05Mi43NSwzOC40LTE0My4zN2wtNDI0LjUxLDkwLjI0WiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTEwODUuNzMsODk1LjhjMjAuMDYtNDQuNDcsMzMuMzItOTIuNzUsMzguNC0xNDMuMzdsLTMzMC42OCw3MC4zM3YtMTM1LjJsMjkyLjI3LTYyLjExYzIwLjA2LTQ0LjQ3LDMzLjMyLTkyLjc1LDM4LjQtMTQzLjM3bC0zMzAuNjgsNzAuMjdWNjYuMTNjLTUwLjY3LDI4LjQ1LTk1LjY3LDY2LjMyLTEzMi4yNSwxMTAuOTl2NDAzLjM1bC0xMzIuMjUsMjguMTFWMGMtNTAuNjcsMjguNDQtOTUuNjcsNjYuMzItMTMyLjI1LDExMC45OXY1MjUuNjlsLTI5NS45MSw2Mi44OGMtMjAuMDYsNDQuNDctMzMuMzMsOTIuNzUtMzguNDIsMTQzLjM3bDMzNC4zMy03MS4wNXYxNzAuMjZsLTM1OC4zLDc2LjE0Yy0yMC4wNiw0NC40Ny0zMy4zMiw5Mi43NS0zOC40LDE0My4zN2wzNzUuMDQtNzkuN2MzMC41My02LjM1LDU2Ljc3LTI0LjQsNzMuODMtNDkuMjRsNjguNzgtMTAxLjk3di0uMDJjNy4xNC0xMC41NSwxMS4zLTIzLjI3LDExLjMtMzYuOTd2LTE0OS45OGwxMzIuMjUtMjguMTF2MjcwLjRsNDI0LjUzLTkwLjI4WiIvPgo8L3N2Zz4=");
+}
+.RiyalSymbolToken-symbol{ font-family: var(--RiyalSymbolToken-font); font-weight:700; }
+
+/* الأيقونة بعد الرقم وفقط على عناصر المبالغ */
+.RiyalSymbolToken-after .money::after,
+.RiyalSymbolToken-after [data-money]::after{
+  content: "";
+  display: inline-block;
+  width: var(--RiyalSymbolToken-size);
+  height: var(--RiyalSymbolToken-size);
+  margin-inline-start: calc(var(--RiyalSymbolToken-gap) * 2); margin-inline-end: 0;
+  background-color: currentColor;
+  -webkit-mask-image: var(--RiyalSymbolToken-url); mask-image: var(--RiyalSymbolToken-url);
+  -webkit-mask-repeat: no-repeat;     mask-repeat: no-repeat;
+  -webkit-mask-position: center;      mask-position: center;
+  -webkit-mask-size: contain;         mask-size: contain;
+  vertical-align: baseline;
+}
+
+/* fallback لو الماسك غير مدعوم */
+@supports not (mask-image: var(--RiyalSymbolToken-url)) {
+  .RiyalSymbolToken-after .money::after,
+  .RiyalSymbolToken-after [data-money]::after{
+    content: "ر.س";
+    width: auto; height: auto;
+    background: none; -webkit-mask: none; mask: none;
+    font-family: var(--RiyalSymbolToken-font); font-weight:700;
+    margin-inline-start: calc(var(--RiyalSymbolToken-gap) * 2); margin-inline-end: 0;
+    vertical-align: baseline;
+  }
+}
+
+/* === Totals alignment (RTL) === */
+html[dir="rtl"] .RiyalSymbolToken-after li:has(.money){
+  list-style: none;                 /* يشيل النقاط */
+  display: flex;
+  flex-direction: row-reverse;      /* العنوان يمين، الرقم يسار */
+  justify-content: space-between;   /* نفس عمود للأرقام */
+  align-items: baseline;
+  gap: .75rem;
+}
+/* عمود أرقام ثابت العرض */
+html[dir="rtl"] .RiyalSymbolToken-after li:has(.money) .money{
+  min-width: 12ch;                  /* كبّرها/صغّرها لو ودّك */
+  text-align: start;                /* منطقي مع RTL */
+}
+
+/* لا رمز إذا ما في رقم */
+.RiyalSymbolToken-after .money:empty::after,
+.RiyalSymbolToken-after [data-money]:empty::after{
+  content: none;
+  margin: 0;
+}
+/* --- hard kill for non-money totals --- */
+.RiyalSymbolToken-after .price::before,
+.RiyalSymbolToken-after .price::after,
+.RiyalSymbolToken-after .total::before,
+.RiyalSymbolToken-after .total::after{
+  content: none !important;
+  margin: 0 !important;
+  background: none !important;
+  -webkit-mask: none !important;
+  mask: none !important;
+}
+/* already-supported switches */
+.RiyalSymbolToken-after .money.no-RiyalSymbolToken::after,
+.RiyalSymbolToken-after [data-money].no-RiyalSymbolToken::after{ content:none; margin:0; }
+/* لا رمز إذا العنصر فاضي */
+.RiyalSymbolToken-after .money:empty::after,
+.RiyalSymbolToken-after [data-money]:empty::after{ content:none; margin:0; }
+/* === Totals (RTL) — label/value on one row === */
+html[dir="rtl"] .RiyalSymbolToken-after ul,
+html[dir="rtl"] .RiyalSymbolToken-after li{
+  list-style: none;           /* ألغِ نقط القوائم */
+  margin: 0;
+  padding: 0;
+}
+html[dir="rtl"] .RiyalSymbolToken-after li{
+  display: flex;
+  flex-direction: row-reverse;   /* العنوان يمين والقيمة يسار */
+  justify-content: space-between;
+  align-items: baseline;
+  gap: .75rem;
+}
+
+/* أعمدة القيم: اجعل لها عرضاً ثابتاً لمحاذاة الأرقام */
+html[dir="rtl"] .RiyalSymbolToken-after li .money,
+html[dir="rtl"] .RiyalSymbolToken-after li [data-money],
+html[dir="rtl"] .RiyalSymbolToken-after li .price,
+html[dir="rtl"] .RiyalSymbolToken-after li .total{
+  min-width: 12ch;
+  text-align: start;
+}
+
+/* استبدال أي عنصر قائمة يحتوي فقط على نقطة/نص أبيض بإخفائه */
+html[dir="rtl"] .RiyalSymbolToken-after li:where(:not(:has(.money,[data-money],.price,.total))){
+  display: none;
+}
+
+/* مكان القيم الفارغة اعرض صفر عربي (بدون رمز الريال) */
+.RiyalSymbolToken-after .money:empty::before,
+.RiyalSymbolToken-after [data-money]:empty::before,
+.RiyalSymbolToken-after .price:empty::before,
+.RiyalSymbolToken-after .total:empty::before{
+  content: "٠";
+  opacity: .8;
+}
+
+/* لا تضف رمز الريال على price/total أو العناصر المعلّمة no-RiyalSymbolToken */
+.RiyalSymbolToken-after .price::before, .RiyalSymbolToken-after .price::after,
+.RiyalSymbolToken-after .total::before, .RiyalSymbolToken-after .total::after{
+  content: none !important;
+  background: none !important;
+  -webkit-mask: none !important; mask: none !important;
+}
+.RiyalSymbolToken-after .money.no-RiyalSymbolToken::after,
+.RiyalSymbolToken-after [data-money].no-RiyalSymbolToken::after,
+.RiyalSymbolToken-after .money:empty::after,
+.RiyalSymbolToken-after [data-money]:empty::after{ content: none; }
+/* --- overrides: bullets + RiyalSymbolToken after numbers (even zeros) --- */
+.RiyalSymbolToken-after ul, .RiyalSymbolToken-after li{ list-style:none; margin:0; padding:0; }
+
+/* عمود الأرقام موحّد الاتجاه */
+html[dir="rtl"] .RiyalSymbolToken-after li{
+  display:flex; flex-direction:row-reverse; justify-content:space-between; align-items:baseline; gap:.75rem;
+}
+
+/* ضع الرمز بعد أي عنصر قيمة، إلا إذا مُعلّم no-RiyalSymbolToken (مثل الضريبة) */
+.RiyalSymbolToken-after .money:not(.no-RiyalSymbolToken)::after,
+.RiyalSymbolToken-after .price:not(.no-RiyalSymbolToken)::after,
+.RiyalSymbolToken-after .total:not(.no-RiyalSymbolToken)::after{
+  content:"";
+  display:inline-block;
+  width: var(--RiyalSymbolToken-size,1em);
+  height: var(--RiyalSymbolToken-size,1em);
+  margin-inline-start: calc(var(--RiyalSymbolToken-gap, .35em) * 2);
+  margin-inline-end: 0;
+  background-color: currentColor;
+  -webkit-mask-image: var(--RiyalSymbolToken-url); mask-image: var(--RiyalSymbolToken-url);
+  -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+  -webkit-mask-position:center;  mask-position:center;
+  -webkit-mask-size:contain;      mask-size:contain;
+  transform: translateY(0.08em);
+}
+
+/* إذا كانت القيمة فارغة، أعرض ٠ كعنصر placeholder */
+.RiyalSymbolToken-after .money.zero::before,
+.RiyalSymbolToken-after .price.zero::before,
+.RiyalSymbolToken-after .total.zero::before{ content:"٠"; opacity:.85; }
+/* Currency-name field uses strong symbol font */
+.RiyalSymbolToken-currency-name, .RiyalSymbolToken-currency-name *{
+  font-family: var(--RiyalSymbolToken-font,"Noto Sans Arabic","Segoe UI","Segoe UI Symbol","Tahoma","Arial Unicode MS",system-ui,sans-serif) !important;
+  font-weight:700;
+}
+
+/* أيقونة الرمز لاستخدامها داخل خانة العملة */
+.RiyalSymbolToken-csym{
+  display:inline-block;
+  width: 1.15em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask-image: var(--RiyalSymbolToken-url); mask-image: var(--RiyalSymbolToken-url);
+  -webkit-mask-repeat: no-repeat;     mask-repeat: no-repeat;
+  -webkit-mask-position: center;      mask-position: center;
+  -webkit-mask-size: contain;         mask-size: contain;
+  vertical-align: -0.08em;
+}
+/* تأكيد الخط داخل خانة العملة */
+.RiyalSymbolToken-currency-name, .RiyalSymbolToken-currency-name *{
+  font-family: var(--RiyalSymbolToken-font,"Noto Sans Arabic","Segoe UI","Segoe UI Symbol","Tahoma","Arial Unicode MS",system-ui,sans-serif) !important;
+  font-weight: 700;
+}
+
+/* [SAR-SINGLE-BEGIN] */
+:root { --riyal-color: #000; }
+
+/* العنصر نفسه هو المصدر الوحيد للعرض */
+.riyal-symbol,
+.RiyalSymbolToken-currency-name {
+  color: var(--riyal-color) !important;          /* أسود */
+  -webkit-text-fill-color: var(--riyal-color) !important;
+  background: none !important;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: 'RialSymbol','Tajawal','IBM Plex Sans Arabic',sans-serif;
+}
+
+/* عطّل أي ::before/::after حتى لا يتكرر */
+.riyal-symbol::before,
+.riyal-symbol::after,
+.RiyalSymbolToken-currency-name::before,
+.RiyalSymbolToken-currency-name::after {
+  content: none !important;
+}
+
+/* اخفِ أي SVG/IMG داخل العنصر (المصدر الثاني للتكرار) */
+.riyal-symbol > svg,
+.riyal-symbol svg,
+.riyal-symbol > img,
+.RiyalSymbolToken-currency-name > svg,
+.RiyalSymbolToken-currency-name svg,
+.RiyalSymbolToken-currency-name > img {
+  display: none !important;
+}
+
+/* منع خلفيات أيقونية */
+.riyal-symbol,
+.RiyalSymbolToken-currency-name {
+  background-image: none !important;
+}
+/* [SAR-SINGLE-END] */
+
+/* [SAR-KILL-ICONS-BEGIN] */
+:root { --riyal-color:#000; }
+
+/* الرمز الرسمي يبقى أسود كنص واحد */
+.riyal-symbol,
+.RiyalSymbolToken-currency-name { color: var(--riyal-color) !important; -webkit-text-fill-color: var(--riyal-color) !important; background: none !important; }
+
+/* اقتل أيقونات خارجية قد تتكدّس حوله */
+img[src*="sar"],
+img[src*="riyal"],
+svg[class*="sar"],
+svg[id*="sar"],
+svg[class*="riyal"],
+svg[id*="riyal"] { display:none !important; }
+
+/* لو فيه use داخل svg sprite */
+svg use[href*="sar"],
+svg use[xlink\\:href*="sar"],
+svg use[href*="riyal"],
+svg use[xlink\\:href*="riyal"] { display:none !important; }
+
+/* منع أي خلفية تحمل sar/riyal */
+*[style*="sar.svg"],
+*[style*="riyal.svg"] { background-image:none !important; }
+/* [SAR-KILL-ICONS-END] */
+
+/* [SAR-FINAL-DEDUPE] أخفِ أي IMG/SVG أخ أو مجاور لعنصر الرمز */
+.riyal-symbol ~ img,
+.riyal-symbol ~ svg,
+img ~ .riyal-symbol,
+svg ~ .riyal-symbol,
+.RiyalSymbolToken-currency-name ~ img,
+.RiyalSymbolToken-currency-name ~ svg,
+img ~ .RiyalSymbolToken-currency-name,
+svg ~ .RiyalSymbolToken-currency-name { display:none !important; }
+
+/* حالات object/embed/svg image */
+object[data*="sar"], object[data*="riyal"],
+embed[src*="sar"], embed[src*="riyal"],
+svg image[href*="sar"], svg image[href*="riyal"] { display:none !important; }
+
+/* [SAR-ONE-ONLY-BEGIN] */
+:root { --riyal-color:#000; }
+
+.riyal-symbol, .RiyalSymbolToken-currency-name{
+  color:var(--riyal-color)!important;
+  -webkit-text-fill-color:var(--riyal-color)!important;
+  background:none!important;
+  white-space:nowrap; line-height:1;
+  font-family:'RialSymbol','Tajawal','IBM Plex Sans Arabic',sans-serif;
+}
+
+/* لا تسمح بأي SVG/IMG داخل عنصر الرمز نفسه */
+.riyal-symbol svg, .riyal-symbol img,
+.RiyalSymbolToken-currency-name svg, .RiyalSymbolToken-currency-name img { display:none!important; }
+
+/* أخفِ أي IMG/SVG أخ/جارٍ للرمز داخل نفس الحاوية */
+:where(.riyal-symbol, .RiyalSymbolToken-currency-name) ~ :is(svg,img,object,embed),
+:is(svg,img,object,embed) ~ :where(.riyal-symbol, .RiyalSymbolToken-currency-name) { display:none!important; }
+/* [SAR-ONE-ONLY-END] */
+
+/* [SAR-HAS-PURGE-BEGIN] */
+:root { --riyal-color:#000; }
+.riyal-symbol, .RiyalSymbolToken-currency-name{
+  color:var(--riyal-color)!important; -webkit-text-fill-color:var(--riyal-color)!important;
+  white-space:nowrap; line-height:1; background:none!important;
+  font-family:'RialSymbol','Tajawal','IBM Plex Sans Arabic',sans-serif;
+}
+/* أي حاوية فيها الرمز: لا أيقونات ولا خلفيات صغيرة */
+*:has(.riyal-symbol) img,
+*:has(.riyal-symbol) svg,
+*:has(.riyal-symbol) object,
+*:has(.riyal-symbol) embed,
+*:has(.RiyalSymbolToken-currency-name) img,
+*:has(.RiyalSymbolToken-currency-name) svg,
+*:has(.RiyalSymbolToken-currency-name) object,
+*:has(.RiyalSymbolToken-currency-name) embed { display:none !important; }
+*:has(.riyal-symbol), *:has(.RiyalSymbolToken-currency-name){ background-image:none !important; }
+/* [SAR-HAS-PURGE-END] */

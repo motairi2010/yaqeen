@@ -1,0 +1,45 @@
+﻿@font-face {
+    font-family: 'SaudiRiyal';
+    src: url('../assets/fonts/Saudi-Riyal.woff2') format('woff2'),
+         url('../assets/fonts/Saudi-Riyal.ttf') format('truetype');
+    font-display: swap;
+}
+
+:root {
+    --riyal-symbol: "ر.س";
+    --riyal-font: 'SaudiRiyal', 'Arial', sans-serif;
+    --riyal-color: #1da1f2;
+}
+
+.riyal-symbol {
+    font-family: var(--riyal-font);
+    color: var(--riyal-color);
+    font-weight: bold;
+}
+
+.riyal-amount {
+    font-family: var(--riyal-font, inherit);
+    direction: ltr;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.riyal-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.riyal-small { font-size: 0.8em; }
+.riyal-normal { font-size: 1em; }
+.riyal-large { font-size: 1.4em; }
+
+.riyal-price {
+    background: linear-gradient(135deg, #1da1f2, #0d8bd9);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+

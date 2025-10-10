@@ -1,0 +1,8 @@
+﻿node_modules
+build
+diagnostics
+.env
+.env.*
+*.log
+*.bak
+*.bak-*

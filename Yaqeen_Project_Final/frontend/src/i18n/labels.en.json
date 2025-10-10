@@ -1,0 +1,43 @@
+{
+    "brand":  {
+                  "suite":  "Yaqeen — Retail Suite",
+                  "short":  "Yaqeen"
+              },
+    "nav":  {
+                "dashboard":  "Dashboard",
+                "pos":  "Cashier — Yaqeen",
+                "inventory":  "Inventory",
+                "products":  "Products",
+                "suppliers":  "Suppliers",
+                "customers":  "Customers \u0026 Loyalty",
+                "pricing":  "Smart Pricing",
+                "promotions":  "Promotions \u0026 Coupons",
+                "reports":  "Reports \u0026 Analytics",
+                "settings":  "Settings \u0026 Roles",
+                "cash":  "Cash Management",
+                "accounting":  "Accounting (VAT/ZATCA)",
+                "purchasing":  "Purchasing",
+                "returns":  "Returns",
+                "sales":  "Sales",
+                "invoices":  "Invoices",
+                "cashManagement":  "Cash Management"
+            },
+    "pos":  {
+                "quickMode":  "Quick Sale — Yaqeen Fast",
+                "finish":  "Issue Invoice",
+                "discount":  "Discount",
+                "split":  "Split Payment",
+                "xReport":  "X Report",
+                "zReport":  "Z Report",
+                "overridePin":  "Manager Approval PIN"
+            },
+    "inventory":  {
+                      "lowStock":  "Low Stock Items",
+                      "rop":  "Reorder Point (ROP)"
+                  },
+    "accounting":  {
+                       "vat":  "VAT 15%",
+                       "qr":  "QR — ZATCA TLV",
+                       "ubl":  "UBL/XML Invoice File"
+                   }
+}
