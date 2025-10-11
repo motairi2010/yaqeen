@@ -1,18 +1,14 @@
-﻿import React from "react";
+import React from "react";
 
-/**
- * CurrencySelect
- * يعرض رمز الريال الصحيح بطباعة "ر" واعتماده على خط RialSymbol المربوط على U+0631
- */
 export default function CurrencySelect({
-  value = "RiyalSymbolToken",
+  value = "SAR",
   onChange = () => {},
   className = "",
   lang = "ar",
   allowed
 }) {
   const all = [
-    { code: "RiyalSymbolToken", label: (lang === "ar" ? "ر <RiyalSymbol showText={true} />" : "ر RiyalSymbolToken"), optionClass: "RiyalSymbolToken-font" },
+    { code: "SAR", label: "﷼ SAR" },
     { code: "USD", label: "$ USD" },
     { code: "EUR", label: "€ EUR" },
     { code: "GBP", label: "£ GBP" },
