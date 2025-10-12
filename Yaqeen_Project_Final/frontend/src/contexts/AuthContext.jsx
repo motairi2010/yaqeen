@@ -132,6 +132,71 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const enrollMFA = async () => {
+    if (!user) return { error: new Error('No user logged in') };
+
+    try {
+      const { data, error } = await supabase.auth.mfa.enroll({
+        factorType: 'totp'
+      });
+
+      if (error) throw error;
+      return { data, error: null };
+    } catch (error) {
+      return { data: null, error };
+    }
+  };
+
+  const verifyMFA = async (factorId, code) => {
+    if (!user) return { error: new Error('No user logged in') };
+
+    try {
+      const { data, error } = await supabase.auth.mfa.challenge({
+        factorId
+      });
+
+      if (error) throw error;
+
+      const { data: verifyData, error: verifyError } = await supabase.auth.mfa.verify({
+        factorId,
+        challengeId: data.id,
+        code
+      });
+
+      if (verifyError) throw verifyError;
+      return { data: verifyData, error: null };
+    } catch (error) {
+      return { data: null, error };
+    }
+  };
+
+  const unenrollMFA = async (factorId) => {
+    if (!user) return { error: new Error('No user logged in') };
+
+    try {
+      const { data, error } = await supabase.auth.mfa.unenroll({
+        factorId
+      });
+
+      if (error) throw error;
+      return { data, error: null };
+    } catch (error) {
+      return { data: null, error };
+    }
+  };
+
+  const listMFAFactors = async () => {
+    if (!user) return { data: null, error: new Error('No user logged in') };
+
+    try {
+      const { data, error } = await supabase.auth.mfa.listFactors();
+      if (error) throw error;
+      return { data, error: null };
+    } catch (error) {
+      return { data: null, error };
+    }
+  };
+
   const value = {
     user,
     profile,
@@ -140,6 +205,10 @@ export const AuthProvider = ({ children }) => {
     signIn,
     signOut,
     updateProfile,
+    enrollMFA,
+    verifyMFA,
+    unenrollMFA,
+    listMFAFactors,
     isAuthenticated: !!user,
     role: profile?.role || null
   };

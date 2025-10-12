@@ -22,6 +22,7 @@ import Sales from './pages/Sales';
 import Returns from './pages/Returns';
 import Purchasing from './pages/Purchasing';
 import Accounting from './pages/Accounting';
+import APIDocumentation from './pages/APIDocumentation';
 
 import './styles/index.css';
 import './styles/riyal-system.css';
@@ -121,6 +122,7 @@ function AppRoutes() {
         <Route path="returns" element={<Returns />} />
         <Route path="purchasing" element={<Purchasing />} />
         <Route path="accounting" element={<Accounting />} />
+        <Route path="api-docs" element={<APIDocumentation />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/dashboard" replace />} />

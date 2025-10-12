@@ -1,6 +1,7 @@
-﻿import React from "react";
+import React from "react";
 import { getSettings, patchSettings } from "../lib/settings";
 import { getPolicy, savePolicy, DEFAULT_POLICY, setPin } from "../lib/policy";
+import MFASettings from "../components/MFASettings";
 
 export default function Settings(){
   const [s, setS] = React.useState(()=> {
@@ -87,6 +88,10 @@ export default function Settings(){
 
       <div className="actions" style={{gridColumn:"span 12", gap:12}}>
         <button className="btn primary" onClick={saveAll}>💾 حفظ</button>
+      </div>
+
+      <div style={{gridColumn:"span 12"}}>
+        <MFASettings />
       </div>
     </div>
   );
