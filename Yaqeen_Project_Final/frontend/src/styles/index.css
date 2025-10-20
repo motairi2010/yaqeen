@@ -1,4 +1,4 @@
-﻿@import "./currency.css";
+﻿@import "./styles/currency.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
