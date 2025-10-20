@@ -338,7 +338,7 @@ export default function Accounting() {
                   <div style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', borderRadius: '12px', padding: '32px', textAlign: 'center', color: 'white' }}>
                     <div style={{ fontSize: '16px', opacity: 0.9, marginBottom: '12px' }}>الزكاة المستحقة سنوياً (2.5%)</div>
                     <div style={{ fontSize: '48px', fontWeight: '700', marginBottom: '8px' }}>{formatCurrency(zakatData.zakatAmount)} ﷼</div>
-                    <div style={{ fontSize: '14px', opacity: 0.8' }}>بناءً على صافي الأصول الحالي</div>
+                    <div style={{ fontSize: '14px', opacity: 0.8 }}>بناءً على صافي الأصول الحالي</div>
                   </div>
 
                   <div style={{ marginTop: '24px', padding: '20px', background: '#fef3c7', borderRadius: '12px', border: '1px solid #fde68a' }}>

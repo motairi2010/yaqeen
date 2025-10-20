@@ -7,14 +7,14 @@ export const RiyalProvider = ({ children }) => {
   const riyalUtils = {
     format: (amount) => {
       return (
-        <span className=\"riyal-container\">
-          <span className=\"riyal-amount\">{amount}</span>
+        <span className="riyal-container">
+          <span className="riyal-amount">{amount}</span>
           RiyalSymbolToken
         </span>
       );
     },
     
-    formatText: (amount) => \\ ر.س\,
+    formatText: (amount) => `${amount} ر.س`,
     
     symbol: () => RiyalSymbolToken,
     
