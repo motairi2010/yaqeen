@@ -1,0 +1,2 @@
+[submodule "vendor/other-repo"]
+	branch = main
