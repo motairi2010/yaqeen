@@ -279,12 +279,12 @@ export async function getTopCustomers(limit = 10) {
 
 // حساب نقاط الولاء من مبلغ الشراء
 export function calculateLoyaltyPoints(purchaseAmount, pointsPerRiyal = 1) {
-  // كل ريال = نقطة واحدة (يمكن تخصيصها)
+  // كل ﷼ = نقطة واحدة (يمكن تخصيصها)
   return Math.floor(purchaseAmount * pointsPerRiyal);
 }
 
 // تحويل نقاط الولاء إلى خصم
 export function convertPointsToDiscount(points, pointValue = 0.1) {
-  // كل نقطة = 0.1 ريال (يمكن تخصيصها)
+  // كل نقطة = 0.1 ﷼ (يمكن تخصيصها)
   return points * pointValue;
 }

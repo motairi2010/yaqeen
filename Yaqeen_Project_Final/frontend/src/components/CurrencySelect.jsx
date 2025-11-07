@@ -1,8 +1,8 @@
-﻿import React from "react";
+import React from "react";
 
 /**
  * CurrencySelect
- * يعرض رمز الريال الصحيح بطباعة "ر" واعتماده على خط RialSymbol المربوط على U+0631
+ * يعرض رمز ال﷼ الصحيح بطباعة "ر" واعتماده على خط RialSymbol المربوط على U+0631
  */
 export default function CurrencySelect({
   value = "SAR",

@@ -1,4 +1,4 @@
-﻿import rialFontUrl from "./assets/fonts/RialSymbol.ttf";
+import rialFontUrl from "./assets/fonts/RialSymbol.ttf";
 /* inject RialSymbol font (scoped to U+0631 only) */
 (() => {
   const css = `
@@ -216,17 +216,17 @@ document.body.classList.add('RiyalSymbolToken-after');
     // inputs / contenteditable
     root.querySelectorAll('input, [contenteditable="true"]').forEach(el=>{
       const val = (('value' in el) ? el.value : el.textContent || '').trim();
-      if (/^ريال$/i.test(val)) {
+      if (/^﷼$/i.test(val)) {
         if ('value' in el) { el.value = "﷼"; el.dispatchEvent(new Event('input',{bubbles:true})); }
         else { el.textContent = "﷼"; }
       }
       const ph = el.getAttribute?.('placeholder');
-      if (ph && /^ريال$/i.test(ph)) el.setAttribute('placeholder','﷼');
+      if (ph && /^﷼$/i.test(ph)) el.setAttribute('placeholder','﷼');
     });
     // selects / options
     root.querySelectorAll('select').forEach(sel=>{
       sel.querySelectorAll('option').forEach(opt=>{
-        if (/^\s*ريال\s*$/i.test(opt.textContent || "")) {
+        if (/^\s*﷼\s*$/i.test(opt.textContent || "")) {
           opt.textContent = "﷼"; // نغيّر النص فقط، القيمة (value) تبقى كما هي (مثلاً RiyalSymbolToken)
         }
       });
@@ -251,7 +251,7 @@ document.body.classList.add('RiyalSymbolToken-after');
 (() => {
   if (window.__CurrencyLabel2) return;
 
-  const isRialOnly = s => /^\s*ريال\s*$/i.test(s || "");
+  const isRialOnly = s => /^\s*﷼\s*$/i.test(s || "");
 
   function tweak(el){
     // بدّل نصوص العقد النصية المباشرة
@@ -303,9 +303,9 @@ document.body.classList.add('RiyalSymbolToken-after');
   window.__CurrencyLabel2 = true;
 })();
 
-/* __swapRiyalSymbol: بدّل RiyalSymbolToken المنفردة إلى "﷼" (لا يلمس "بالريال" إلخ) */
+/* __swapRiyalSymbol: بدّل RiyalSymbolToken المنفردة إلى "﷼" (لا يلمس "بال﷼" إلخ) */
 (() => {
-  const isRial = s => /^\s*ريال\s*$/.test(s || "");
+  const isRial = s => /^\s*﷼\s*$/.test(s || "");
   function swap(root=document){
     // options داخل select
     root.querySelectorAll('select option').forEach(o=>{
@@ -468,7 +468,7 @@ document.body.classList.add('RiyalSymbolToken-after');
   // نبدّل RiyalSymbolToken أو "<RiyalSymbol showText={true} />" فقط. لو ودك تشمل RiyalSymbolToken/Riyal فعّل الأسطر في التعليق.
   function isRiyalWord(txt){
     const n = norm(txt);
-    return /^ريال(?: سعودي)?$/.test(n);
+    return /^﷼(?: سعودي)?$/.test(n);
     // || n === "riyal" || n === "saudi riyal" || n === "RiyalSymbolToken"
   }
 
@@ -572,7 +572,7 @@ document.body.classList.add('RiyalSymbolToken-after');
   if (window.__currencyIconInjection) return;
 
   const AR_DIAC = /[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED\u0640]/g;
-  const WORDS   = /^(?:ريال(?:\s*سعودي)?|RiyalSymbolToken|riy?al|saudi\s*riy?al)$/i;
+  const WORDS   = /^(?:﷼(?:\s*سعودي)?|RiyalSymbolToken|riy?al|saudi\s*riy?al)$/i;
 
   function norm(s){ return (s||"").replace(AR_DIAC,"").replace(/\s+/g," ").trim().toLowerCase(); }
   function isRiyalWord(s){ return WORDS.test(norm(s)); }
@@ -607,7 +607,7 @@ document.body.classList.add('RiyalSymbolToken-after');
     // لا نعيد الحقن مرتين
     if (el.querySelector?.(".RiyalSymbolToken-csym")) return;
 
-    // لو العنصر يحتوي نص "ريال..." نحوله لأيقونة
+    // لو العنصر يحتوي نص "﷼..." نحوله لأيقونة
     if (isRiyalWord(el.textContent)) {
       el.textContent = "";
       const s = el.ownerDocument.createElement("span");

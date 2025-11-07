@@ -1,4 +1,4 @@
-﻿:root{
+:root{
   --RiyalSymbolToken-font: "Noto Sans Arabic","Segoe UI","Segoe UI Symbol","Tahoma","Arial Unicode MS",system-ui,sans-serif;
   --RiyalSymbolToken-size: 1em;
   --RiyalSymbolToken-gap: .35em;
@@ -100,7 +100,7 @@ html[dir="rtl"] .RiyalSymbolToken-after li:where(:not(:has(.money,[data-money],.
   display: none;
 }
 
-/* مكان القيم الفارغة اعرض صفر عربي (بدون رمز الريال) */
+/* مكان القيم الفارغة اعرض صفر عربي (بدون رمز ال﷼) */
 .RiyalSymbolToken-after .money:empty::before,
 .RiyalSymbolToken-after [data-money]:empty::before,
 .RiyalSymbolToken-after .price:empty::before,
@@ -109,7 +109,7 @@ html[dir="rtl"] .RiyalSymbolToken-after li:where(:not(:has(.money,[data-money],.
   opacity: .8;
 }
 
-/* لا تضف رمز الريال على price/total أو العناصر المعلّمة no-RiyalSymbolToken */
+/* لا تضف رمز ال﷼ على price/total أو العناصر المعلّمة no-RiyalSymbolToken */
 .RiyalSymbolToken-after .price::before, .RiyalSymbolToken-after .price::after,
 .RiyalSymbolToken-after .total::before, .RiyalSymbolToken-after .total::after{
   content: none !important;

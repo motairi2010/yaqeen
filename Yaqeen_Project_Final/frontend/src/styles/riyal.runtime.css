@@ -12,5 +12,5 @@
 }
 .RiyalSymbol-font.nowrap { white-space: nowrap; }
 .RiyalSymbol-symbol { font-size: 0 !important; }
-.RiyalSymbol-symbol::after { content: "الريال"; font-size: inherit; }
+.RiyalSymbol-symbol::after { content: "ال﷼"; font-size: inherit; }
 .RiyalSymbol-ry { }

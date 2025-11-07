@@ -1,7 +1,7 @@
-﻿(() => {
+(() => {
   const SYMBOL = "﷼";
   const SPACE = "\u00A0";
-  const WORDS = /(^|[\s\u00A0])(?:SAR|ر\.?\s*س\.?|الريال|ريال(?:\s+سعودي)?)(?=$|[\s\u00A0])/gu;
+  const WORDS = /(^|[\s\u00A0])(?:SAR|ر\.?\s*س\.?|ال﷼|﷼(?:\s+سعودي)?)(?=$|[\s\u00A0])/gu;
 
   const shouldSkip = (n: Node) => {
     const el = n.parentNode as Element | null;
