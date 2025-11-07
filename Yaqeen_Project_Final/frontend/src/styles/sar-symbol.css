@@ -9,16 +9,14 @@
 /* الأيقونة بعد الرقم وفقط على عناصر المبالغ */
 .RiyalSymbolToken-after .money::after,
 .RiyalSymbolToken-after [data-money]::after{
-  content: "";
-  display: inline-block;
-  width: var(--RiyalSymbolToken-size);
-  height: var(--RiyalSymbolToken-size);
-  margin-inline-start: calc(var(--RiyalSymbolToken-gap) * 2); margin-inline-end: 0;
-  background-color: currentColor;
-  -webkit-mask-image: var(--RiyalSymbolToken-url); mask-image: var(--RiyalSymbolToken-url);
-  -webkit-mask-repeat: no-repeat;     mask-repeat: no-repeat;
-  -webkit-mask-position: center;      mask-position: center;
-  -webkit-mask-size: contain;         mask-size: contain;
+  content: none !important;
+  display: none !important;
+  width: 0;
+  height: 0;
+  margin: 0;
+  background: none !important;
+  -webkit-mask: none !important;
+  mask: none !important;
   vertical-align: baseline;
 }
 
@@ -134,18 +132,15 @@ html[dir="rtl"] .RiyalSymbolToken-after li{
 .RiyalSymbolToken-after .money:not(.no-RiyalSymbolToken)::after,
 .RiyalSymbolToken-after .price:not(.no-RiyalSymbolToken)::after,
 .RiyalSymbolToken-after .total:not(.no-RiyalSymbolToken)::after{
-  content:"";
-  display:inline-block;
-  width: var(--RiyalSymbolToken-size,1em);
-  height: var(--RiyalSymbolToken-size,1em);
-  margin-inline-start: calc(var(--RiyalSymbolToken-gap, .35em) * 2);
-  margin-inline-end: 0;
-  background-color: currentColor;
-  -webkit-mask-image: var(--RiyalSymbolToken-url); mask-image: var(--RiyalSymbolToken-url);
-  -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
-  -webkit-mask-position:center;  mask-position:center;
-  -webkit-mask-size:contain;      mask-size:contain;
-  transform: translateY(0.08em);
+  content: none !important;
+  display: none !important;
+  width: 0;
+  height: 0;
+  margin: 0;
+  background: none !important;
+  -webkit-mask: none !important;
+  mask: none !important;
+  transform: none;
 }
 
 /* إذا كانت القيمة فارغة، أعرض ٠ كعنصر placeholder */
@@ -177,7 +172,7 @@ html[dir="rtl"] .RiyalSymbolToken-after li{
 }
 
 /* [SAR-SINGLE-BEGIN] */
-:root { --riyal-color: #000; }
+:root { --riyal-color: currentColor; }
 
 /* العنصر نفسه هو المصدر الوحيد للعرض */
 .riyal-symbol,

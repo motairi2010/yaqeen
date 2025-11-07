@@ -8,7 +8,7 @@
 :root {
     --riyal-symbol: "ر.س";
     --riyal-font: 'SaudiRiyal', 'Arial', sans-serif;
-    --riyal-color: #1da1f2;
+    --riyal-color: currentColor;
 }
 
 .riyal-symbol {
@@ -36,8 +36,8 @@
 .riyal-large { font-size: 1.4em; }
 
 .riyal-price {
-    background: linear-gradient(135deg, #1da1f2, #0d8bd9);
-    color: white;
+    background: transparent;
+    color: currentColor;
     padding: 4px 8px;
     border-radius: 6px;
     font-weight: bold;

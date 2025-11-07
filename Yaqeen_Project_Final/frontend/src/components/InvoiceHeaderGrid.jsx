@@ -1,6 +1,7 @@
 ﻿// src/components/InvoiceHeaderGrid.jsx
 import React from "react";
 import { INVOICE_FIELDS } from "../config/invoiceFields";
+import CurrencySelect from "./CurrencySelect";
 import "../styles/invoice-grid.css";
 
 export default function InvoiceHeaderGrid({ values = {}, onChange }) {
@@ -13,11 +14,13 @@ export default function InvoiceHeaderGrid({ values = {}, onChange }) {
     // ملاحظة: <option> ما تدعم صور، لذا نعرض الرمز كنص داخل القائمة
     if (f.key === "currency") {
       return (
-        <select id={f.key} name={f.key} value={val || "\uFDFC"} onChange={set(f.key)}>
-          <option value="\uFDFC">{"\uFDFC"}</option>
-          <option value="USD $">{"USD $"}</option>
-          <option value={"EUR \u20AC"}>{"EUR \u20AC"}</option>
-        </select>
+        <CurrencySelect
+          value={val || "SAR"}
+          onChange={(v) => onChange && onChange("currency", v)}
+          className="w-full"
+          lang="ar"
+          allowed={["SAR","USD","EUR"]}
+        />
       );
     }
 

@@ -15,7 +15,7 @@ const RiyalSymbol = ({
 
   return (
     <span className={`riyal-container ${sizeClass} ${className}`}>
-      <span className="riyal-symbol">ر</span>
+      <span className="riyal-symbol">ر.س</span>
       {amount && <span className="riyal-amount">{amount}</span>}
       {showText && <span className="riyal-text">ريال سعودي</span>}
     </span>
