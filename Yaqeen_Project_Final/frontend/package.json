@@ -4,6 +4,7 @@
     "description": "ط¨ط±ظ†ط§ظ…ط¬ ظٹظ‚ظٹظ† ط§ظ„ظ…ط­ط§ط³ط¨ظٹ ط§ظ„ط°ظƒظٹ",
     "main": "src/index.js",
     "dependencies": {
+        "@supabase/supabase-js": "^2.80.0",
         "axios": "^1.3.0",
         "date-fns": "^4.1.0",
         "file-saver": "^2.0.5",
@@ -19,7 +20,9 @@
         "zustand": "^5.0.8"
     },
     "devDependencies": {
+        "@craco/craco": "^7.1.0",
         "autoprefixer": "^10.4.0",
+        "css-minimizer-webpack-plugin": "^7.0.2",
         "http-proxy-middleware": "^2.0.9",
         "postcss": "^8.4.0",
         "react-scripts": "^5.0.1",
@@ -38,9 +41,9 @@
         ]
     },
     "scripts": {
-        "test": "react-scripts test",
-        "build": "react-scripts build",
-        "dev": "react-scripts start",
-        "start": "react-scripts start"
+        "test": "craco test",
+        "build": "craco build",
+        "dev": "craco start",
+        "start": "craco start"
     }
 }

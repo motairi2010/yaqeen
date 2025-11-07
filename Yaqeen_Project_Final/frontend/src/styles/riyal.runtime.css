@@ -1,11 +1,11 @@
-﻿/* src/styles/riyal.runtime.css (fixed) */
+/* src/styles/riyal.runtime.css (fixed) */
 @font-face {
   font-family: "SaudiRiyal";
   src: url("../assets/fonts/Saudi-Riyal.ttf") format("truetype");
   font-display: swap;
 }
 .RiyalSymbol-font {
-  font-family: "SaudiRiyal", inherit !important;
+  font-family: "SaudiRiyal", system-ui, sans-serif !important;
   font-feature-settings: "liga" 1, "rlig" 1;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
