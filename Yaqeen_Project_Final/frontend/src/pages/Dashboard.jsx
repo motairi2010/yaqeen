@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
-import { useAuth } from "../contexts/AuthContext";
 
 export default function Dashboard(){
-  const { user, profile } = useAuth();
   const [stats, setStats] = useState({
     todaySales: 0,
     monthSales: 0,
@@ -120,7 +118,7 @@ export default function Dashboard(){
         </div>
       </div>
       <div className="card" style={{gridColumn:"span 12"}}>
-        <div className="label">مرحبًا {profile?.full_name || user?.email || ""} في يَقين</div>
+        <div className="label">مرحبًا بك في يَقين</div>
         <p>تم تطبيق الهيكل والـ POS والإعدادات الافتراضية. استخدم القائمة للتنقل.</p>
       </div>
     </div>

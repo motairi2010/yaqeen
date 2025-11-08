@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
-import { useAuth } from "../contexts/AuthContext";
 
 const SarFmt = v => (v).toLocaleString("ar-SA",{ minimumFractionDigits:2, maximumFractionDigits:2 });
 
 export default function Inventory(){
-  const { profile } = useAuth();
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
