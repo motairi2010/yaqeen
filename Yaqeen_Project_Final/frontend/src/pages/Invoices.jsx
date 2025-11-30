@@ -8,7 +8,7 @@ import RiyalSymbol from "../components/RiyalSymbol";
 const initialHeader = {
   customer: "",
   branch: "",
- currency: "SAR",
+ currency: "\uFDFC",
   vat: 15,
   invoiceNumber: "",
   invoiceDate: "",
@@ -25,6 +25,41 @@ export default function Invoices() {
 
   const setH = (k, v) => setHeader((old) => ({ ...old, [k]: v }));
 
+  const renderField = (f) => {
+    const common = {
+      id: f.key, name: f.key,
+      value: header[f.key] ?? "",
+      onChange: (e) => setH(f.key, e.target.value)
+    };
+    if (f.key === "notes") return <textarea {...common} rows={3} />;
+    if (f.key === "invoiceDate" || f.key === "dueDate") return <input {...common} type="date" />;
+    if (f.key === "currency") {
+      return (
+        <select {...common}>
+          <option value="\u0631.\u0633">\u0631.\u0633 (﷼)</option>
+          <option value="USD $">$ (USD)</option>
+          <option value="EUR \u20ac">\u20ac (EUR)</option>
+        </select>
+      );
+    }
+    if (f.key === "paymentMethod") {
+      return (
+        <select {...common}>
+          <option value="">{'\u0627\u062e\u062a\u0631'}</option>
+          <option value="cash">{'\u0646\u0642\u062f\u064a'}</option>
+          <option value="card">{'\u0628\u0637\u0627\u0642\u0629'}</option>
+          <option value="bank">{'\u062a\u062d\u0648\u064a\u0644 \u0628\u0646\u0643\u064a'}</option>
+        </select>
+      );
+    }
+    if (f.key === "vat") {
+      return (
+        <input {...common} type="number" min="0" max="100" step="0.01"
+               onChange={(e) => setH("vat", e.target.value.replace(",", "."))} />
+      );
+    }
+    return <input {...common} type="text" />;
+  };
 
   const addItem = () => setItems((list) => [...list, { description: "", qty: 1, price: 0 }]);
   const removeItem = (idx) => setItems((list) => list.filter((_, i) => i !== idx));
@@ -58,7 +93,7 @@ export default function Invoices() {
         <h2 style={{ textAlign: "right", margin: "12px 0" }}>
           {'\u0645\u0639\u0644\u0648\u0645\u0627\u062A \u0627\u0644\u0641\u0627\u062A\u0648\u0631\u0629'}
         </h2>
-        <InvoiceHeaderGrid values={header} onChange={setH} />
+        <InvoiceHeaderGrid values={header} onChange={setH} renderField={renderField} />
 
         <h2 style={{ textAlign: "right", margin: "24px 0 8px" }}>
           {'\u062A\u0641\u0627\u0635\u064A\u0644 \u0627\u0644\u0639\u0645\u064A\u0644'}

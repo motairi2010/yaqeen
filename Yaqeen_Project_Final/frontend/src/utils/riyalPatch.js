@@ -1,4 +1,4 @@
-export function watchRiyal(){
+﻿export function watchRiyal(){
   try{
     if (typeof window !== "undefined") {
       if (window.__riyalObs) {
@@ -24,7 +24,7 @@ export function watchRiyal(){
       return v.replace(/[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED\u0640\s]/g,"").trim();
     }
     function looksRiyalWord(s){
-      return /^(?:ال)?﷼(?:السعودي)?$/u.test(rm(s));
+      return /^(?:ال)?ريال(?:السعودي)?$/u.test(rm(s));
     }
     function looksRiyalSym(s){
       var v = s ? s : "";
@@ -166,10 +166,10 @@ export function watchRiyal(){
       // نظف أية عناصر داخلية (svg/img) حتى لا تتكرر
       el.querySelectorAll('svg,img').forEach(n=>n.remove());
       const txt = (el.textContent || '').trim();
-      if(/^(?:ر\.س|SAR|﷼ سعودي)$/i.test(txt) || txt.length !== 1) {
+      if(/^(?:ر\.س|SAR|ريال سعودي)$/i.test(txt) || txt.length !== 1) {
         el.textContent = 'ر';
       }
-      el.setAttribute('aria-label','﷼ سعودي');
+      el.setAttribute('aria-label','ريال سعودي');
     });
 
     // 2) ضمن كل أب، احتفظ بأول عنصر فقط وأزل البقية
@@ -184,7 +184,7 @@ export function watchRiyal(){
       }
       // 3) أزل عقد النص المجاورة التي تحتوي "ر.س" أو "SAR"
       Array.from(p.childNodes).forEach(n=>{
-        if(n.nodeType===3 && /ر\.س|SAR|﷼ سعودي/i.test(n.nodeValue)){ n.nodeValue = n.nodeValue.replace(/ر\.س|SAR|﷼ سعودي/gi,''); }
+        if(n.nodeType===3 && /ر\.س|SAR|ريال سعودي/i.test(n.nodeValue)){ n.nodeValue = n.nodeValue.replace(/ر\.س|SAR|ريال سعودي/gi,''); }
       });
     });
   }
@@ -208,7 +208,7 @@ export function watchRiyal(){
     nodes.forEach(el=>{
       // طبّع النص إلى "ر"
       if((el.textContent||"").trim() !== "ر") el.textContent = "ر";
-      el.setAttribute("aria-label","﷼ سعودي");
+      el.setAttribute("aria-label","ريال سعودي");
 
       // احذف أيقونات قريبة داخل الأب والجد
       [el.parentElement, el.parentElement?.parentElement].forEach(host=>{
@@ -219,7 +219,7 @@ export function watchRiyal(){
         siblings.forEach((n,i)=>{ if(i>0) n.remove(); });
         // نظّف عقد نصية فيها "ر.س" أو "SAR"
         Array.from(host.childNodes).forEach(n=>{
-          if(n.nodeType===3 && /ر\.س|SAR|﷼ سعودي/i.test(n.nodeValue)) n.nodeValue = n.nodeValue.replace(/ر\.س|SAR|﷼ سعودي/gi,'');
+          if(n.nodeType===3 && /ر\.س|SAR|ريال سعودي/i.test(n.nodeValue)) n.nodeValue = n.nodeValue.replace(/ر\.س|SAR|ريال سعودي/gi,'');
         });
       });
     });
@@ -242,7 +242,7 @@ export function watchRiyal(){
     // خلي النص "ر" فقط
     root.querySelectorAll(SEL).forEach(el=>{
       if((el.textContent||"").trim()!=="ر") el.textContent="ر";
-      el.setAttribute("aria-label","﷼ سعودي");
+      el.setAttribute("aria-label","ريال سعودي");
     });
     // امسح أي IMG/SVG صغيرة بجوار الرمز حتى لو ما فيها sar بالمسار
     const near = [];
@@ -278,7 +278,7 @@ export function watchRiyal(){
     root.querySelectorAll(SEL).forEach(el=>{
       // ثبّت النص على "ر"
       if((el.textContent||"").trim()!=="ر") el.textContent="ر";
-      el.setAttribute("aria-label","﷼ سعودي");
+      el.setAttribute("aria-label","ريال سعودي");
 
       // احذف أيقونات صغيرة في نفس الحاوية أو الحاوية الأقرب
       let host = el.closest("span,div,td,th,li,p,button") || el.parentElement;
@@ -292,8 +292,8 @@ export function watchRiyal(){
         siblings.forEach((n,i)=>{ if(i>0) n.remove(); });
         // نظّف النصوص المجاورة مثل "ر.س" أو "SAR"
         Array.from(h.childNodes).forEach(n=>{
-          if(n.nodeType===3 && /ر\.س|SAR|﷼ سعودي/i.test(n.nodeValue)){
-            n.nodeValue = n.nodeValue.replace(/ر\.س|SAR|﷼ سعودي/gi,'');
+          if(n.nodeType===3 && /ر\.س|SAR|ريال سعودي/i.test(n.nodeValue)){
+            n.nodeValue = n.nodeValue.replace(/ر\.س|SAR|ريال سعودي/gi,'');
           }
         });
       });
@@ -313,7 +313,7 @@ export function watchRiyal(){
   function lastStrike(root=document){
     root.querySelectorAll(SEL).forEach(el=>{
       if((el.textContent||"").trim()!=="ر") el.textContent = "ر";
-      el.setAttribute("aria-label","﷼ سعودي");
+      el.setAttribute("aria-label","ريال سعودي");
 
       // امشِ للأعلى لثلاثة مستويات ونظّف أي IMG/SVG صغيرة ليست هي الرمز نفسه
       let h = el.parentElement;

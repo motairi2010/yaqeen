@@ -1,6 +1,6 @@
-import React from "react";
+﻿import React from "react";
 
-/* يعرض رمز ال﷼ كأيقونة من public/RiyalSymbolToken-symbol.svg
+/* يعرض رمز الريال كأيقونة من public/RiyalSymbolToken-symbol.svg
    اللون يتبع لون النص عبر mask (يفضّل SVG أحادي اللون). */
 export default function RiyalSymbolTokenSymbol({ size = 16, className = "", color = "currentColor", style }) {
   const url = (process.env.PUBLIC_URL || "") + "/RiyalSymbolToken-symbol.svg";

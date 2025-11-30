@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import "./main.css";import "./lib/pay";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Invoices from "./pages/Invoices";
@@ -39,7 +39,7 @@ export default function App() {
         <Route path="/accounting" element={<Accounting />} />
         <Route path="/purchasing" element={<Purchasing />} />
         <Route path="/returns" element={<Returns />} />
-        <Route path="/invoices" element={<Invoices />} />
+              <Route path="/invoices" element={<Invoices />} />
       </Routes>
     </DashboardLayout>
   );

@@ -1,4 +1,4 @@
-:root{
+﻿:root{
   --RiyalSymbolToken-font: "Noto Sans Arabic","Segoe UI","Segoe UI Symbol","Tahoma","Arial Unicode MS",system-ui,sans-serif;
   --RiyalSymbolToken-size: 1em;
   --RiyalSymbolToken-gap: .35em;
@@ -9,14 +9,16 @@
 /* الأيقونة بعد الرقم وفقط على عناصر المبالغ */
 .RiyalSymbolToken-after .money::after,
 .RiyalSymbolToken-after [data-money]::after{
-  content: none !important;
-  display: none !important;
-  width: 0;
-  height: 0;
-  margin: 0;
-  background: none !important;
-  -webkit-mask: none !important;
-  mask: none !important;
+  content: "";
+  display: inline-block;
+  width: var(--RiyalSymbolToken-size);
+  height: var(--RiyalSymbolToken-size);
+  margin-inline-start: calc(var(--RiyalSymbolToken-gap) * 2); margin-inline-end: 0;
+  background-color: currentColor;
+  -webkit-mask-image: var(--RiyalSymbolToken-url); mask-image: var(--RiyalSymbolToken-url);
+  -webkit-mask-repeat: no-repeat;     mask-repeat: no-repeat;
+  -webkit-mask-position: center;      mask-position: center;
+  -webkit-mask-size: contain;         mask-size: contain;
   vertical-align: baseline;
 }
 
@@ -100,7 +102,7 @@ html[dir="rtl"] .RiyalSymbolToken-after li:where(:not(:has(.money,[data-money],.
   display: none;
 }
 
-/* مكان القيم الفارغة اعرض صفر عربي (بدون رمز ال﷼) */
+/* مكان القيم الفارغة اعرض صفر عربي (بدون رمز الريال) */
 .RiyalSymbolToken-after .money:empty::before,
 .RiyalSymbolToken-after [data-money]:empty::before,
 .RiyalSymbolToken-after .price:empty::before,
@@ -109,7 +111,7 @@ html[dir="rtl"] .RiyalSymbolToken-after li:where(:not(:has(.money,[data-money],.
   opacity: .8;
 }
 
-/* لا تضف رمز ال﷼ على price/total أو العناصر المعلّمة no-RiyalSymbolToken */
+/* لا تضف رمز الريال على price/total أو العناصر المعلّمة no-RiyalSymbolToken */
 .RiyalSymbolToken-after .price::before, .RiyalSymbolToken-after .price::after,
 .RiyalSymbolToken-after .total::before, .RiyalSymbolToken-after .total::after{
   content: none !important;
@@ -132,15 +134,18 @@ html[dir="rtl"] .RiyalSymbolToken-after li{
 .RiyalSymbolToken-after .money:not(.no-RiyalSymbolToken)::after,
 .RiyalSymbolToken-after .price:not(.no-RiyalSymbolToken)::after,
 .RiyalSymbolToken-after .total:not(.no-RiyalSymbolToken)::after{
-  content: none !important;
-  display: none !important;
-  width: 0;
-  height: 0;
-  margin: 0;
-  background: none !important;
-  -webkit-mask: none !important;
-  mask: none !important;
-  transform: none;
+  content:"";
+  display:inline-block;
+  width: var(--RiyalSymbolToken-size,1em);
+  height: var(--RiyalSymbolToken-size,1em);
+  margin-inline-start: calc(var(--RiyalSymbolToken-gap, .35em) * 2);
+  margin-inline-end: 0;
+  background-color: currentColor;
+  -webkit-mask-image: var(--RiyalSymbolToken-url); mask-image: var(--RiyalSymbolToken-url);
+  -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+  -webkit-mask-position:center;  mask-position:center;
+  -webkit-mask-size:contain;      mask-size:contain;
+  transform: translateY(0.08em);
 }
 
 /* إذا كانت القيمة فارغة، أعرض ٠ كعنصر placeholder */
@@ -172,7 +177,7 @@ html[dir="rtl"] .RiyalSymbolToken-after li{
 }
 
 /* [SAR-SINGLE-BEGIN] */
-:root { --riyal-color: currentColor; }
+:root { --riyal-color: #000; }
 
 /* العنصر نفسه هو المصدر الوحيد للعرض */
 .riyal-symbol,

@@ -1,2 +1,2 @@
-.RiyalSymbol-font { font-family: "SaudiRiyal", system-ui, sans-serif; }
+﻿.RiyalSymbol-font { font-family: "SaudiRiyal", inherit; }
 .RiyalSymbol-ry { display: inline-block; }
