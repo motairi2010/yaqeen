@@ -1,6 +1,15 @@
 @font-face{
   font-family: "RialGlyph";
-  src: url("../assets/fonts/Saudi-Riyal.woff2") format("woff2");
+  src: local("Arial"), local("Arial Unicode MS"), local("Tahoma"), local("Segoe UI");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+FDFC;
+}
+
+@font-face{
+  font-family: "Saudi-Riyal";
+  src: local("Arial"), local("Arial Unicode MS"), local("Tahoma"), local("Segoe UI");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;

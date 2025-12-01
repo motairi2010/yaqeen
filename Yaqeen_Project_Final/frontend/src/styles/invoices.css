@@ -17,3 +17,13 @@
 .invoice-page .money {
   font-variant-numeric: tabular-nums;
 }
+
+select[name="currency"],
+select[id="currency"] {
+  font-family: "RialGlyph", "Saudi-Riyal", "Tajawal", "IBM Plex Sans Arabic", system-ui, sans-serif !important;
+}
+
+select[name="currency"] option,
+select[id="currency"] option {
+  font-family: "RialGlyph", "Saudi-Riyal", "Tajawal", "IBM Plex Sans Arabic", system-ui, sans-serif !important;
+}
