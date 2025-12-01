@@ -147,7 +147,7 @@ export default function Invoices() {
                     style={{ padding: 10, borderRadius: 10, border: "1px solid #e5e7eb" }}
                   />
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", paddingRight: 8 }}>
-                    <span className="money">{fmt(lineTotal)}</span> <RiyalSymbol style={{ marginInlineStart: 6 }} />
+                    <span className="money">{fmt(lineTotal)} ﷼</span>
                   </div>
                   <button type="button" onClick={() => removeItem(idx)} style={{ padding: "8px 12px", borderRadius: 10 }}>
                     {'\u062D\u0630\u0641'}
@@ -165,15 +165,15 @@ export default function Invoices() {
         <div style={{ marginTop: 24, display: "grid", gap: 6, maxWidth: 420, marginInlineStart: "auto" }}>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <span className="amount-sar">{'\u0627\u0644\u0625\u062C\u0645\u0627\u0644\u064A \u0642\u0628\u0644 \u0627\u0644\u0636\u0631\u064A\u0628\u0629'}</span>
-            <strong><span className="money">{fmt(subtotal)}</span> <RiyalSymbol style={{ marginInlineStart: 6 }} /></strong>
+            <strong><span className="money">{fmt(subtotal)} ﷼</span></strong>
           </div>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <span className="amount-sar">{'\u0627\u0644\u0636\u0631\u064A\u0628\u0629 '} <span className="money">{fmt(vatPct)}</span>{'%'}</span>
-            <strong><span className="money">{fmt(vatAmount)}</span> <RiyalSymbol style={{ marginInlineStart: 6 }} /></strong>
+            <strong><span className="money">{fmt(vatAmount)} ﷼</span></strong>
           </div>
           <div style={{ display: "flex", justifyContent: "space-between", fontSize: 18 }}>
             <span className="amount-sar">{'\u0627\u0644\u0645\u062C\u0645\u0648\u0639:'}</span>
-            <strong><span className="money">{fmt(grandTotal)}</span> <RiyalSymbol style={{ marginInlineStart: 6 }} /></strong>
+            <strong><span className="money">{fmt(grandTotal)} ﷼</span></strong>
           </div>
         </div>
 

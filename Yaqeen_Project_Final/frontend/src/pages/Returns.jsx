@@ -1,5 +1,4 @@
-﻿import React, { useState } from "react";
-import RiyalSymbol from '../components/RiyalSymbol';
+import React, { useState } from "react";
 const toNum=(v,d=0)=>{ const n=Number(v); return Number.isFinite(n)?n:d; };
 const SarFmt = v => (v).toLocaleString("ar-SA",{minimumFractionDigits:2, maximumFractionDigits:2});
 

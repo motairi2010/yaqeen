@@ -1,5 +1,4 @@
-﻿import React from "react";
-import RiyalSymbol from '../components/RiyalSymbol';
+import React from "react";
 import { buildUBLXml } from "../lib/zatca";
 import { getSettings } from "../lib/settings";
 import JSZip from "jszip";

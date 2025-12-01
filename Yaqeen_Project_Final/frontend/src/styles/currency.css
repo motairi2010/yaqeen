@@ -1,4 +1,5 @@
-﻿/* currency.css — نسخة تعمل بلا مسارات ثابتة */
+/* currency.css - using standard Unicode symbols only */
+
 .sar-icon{
   --sar-size: 1em;
   width: var(--sar-size);
@@ -7,7 +8,6 @@
   vertical-align: -0.12em;
   background-color: currentColor;
 
-  /* نحدد الصورة من الـ style داخل المكوّن */
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
   -webkit-mask-size: contain;
@@ -16,52 +16,7 @@
           mask-size: contain;
 }
 
-.RiyalSymbolToken-wrap{ display:inline-flex; align-items:center; gap:.35rem; }
-[dir="rtl"] .RiyalSymbolToken-wrap{ flex-direction: row-reverse; }
-/* RialSymbol scoped only to U+0631 (Arabic Raa) */
-@font-face{
-  font-family: "RialSymbol";
-  src: local("Saudi-Riyal"), url("../assets/fonts/Saudi-Riyal.woff2") format("woff2"), url("../assets/fonts/Saudi-Riyal.woff") format("woff");
-  font-display: swap;
-  unicode-range: U+0631; /* ر فقط */
-}
-
-/* لا تفعّل الخط إلا عند الحاجة */
-.RiyalSymbolToken-font{ font-family: "RialSymbol", var(--RiyalSymbolToken-font-stack, system-ui, sans-serif); }
-.RiyalSymbolToken-glyph{ line-height:1; vertical-align:-0.12em; }
-
-/* غلاف اختياري لترتيب الرمز مع الرقم في RTL */
-.RiyalSymbolToken-wrap{ display:inline-flex; align-items:center; gap:.35rem; }
-[dir="rtl"] .RiyalSymbolToken-wrap{ flex-direction: row-reverse; }
-
-/* ===== currency.css (menu rules) ===== */
 .currency-ui,
 .currency-ui option{
   font-family: var(--font-ar, "IBM Plex Sans Arabic","Tajawal","Noto Sans Arabic","Segoe UI", system-ui, sans-serif);
 }
-
-/* نفعّل خط الرمز على خيار RiyalSymbolToken فقط */
-.currency-ui option.RiyalSymbolToken-font{
-  font-family: "RialSymbol", var(--font-ar, "IBM Plex Sans Arabic","Tajawal","Noto Sans Arabic","Segoe UI", system-ui, sans-serif);
-}
-
-/* --- Saudi-Riyal font (used only in currency select) --- */
-@font-face{
-  font-family:"Saudi-Riyal";
-  src: local("Saudi-Riyal"), url("../assets/fonts/Saudi-Riyal.woff2") format("woff2"), url("../assets/fonts/Saudi-Riyal.woff") format("woff");
-  font-weight:normal; font-style:normal; font-display:swap;
-}
-
-/* نقيّد التأثير على القائمة فقط عبر .RiyalSymbolToken-ry */
-.RiyalSymbolToken-ry{
-  font-family:"Saudi-Riyal","Tajawal","IBM Plex Sans Arabic","Segoe UI",system-ui,sans-serif;
-  letter-spacing:0;
-}
-
-
-
-
-
-
-
-

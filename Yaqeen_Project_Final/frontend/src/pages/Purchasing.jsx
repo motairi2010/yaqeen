@@ -1,5 +1,4 @@
-﻿import React from "react";
-import RiyalSymbol from '../components/RiyalSymbol';
+import React from "react";
 import { getSuppliers } from "../lib/suppliers";
 import { listInventory, receiveItems } from "../lib/inventory";
 

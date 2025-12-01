@@ -1,5 +1,4 @@
-﻿import React, { useState, useEffect, useRef, useMemo } from "react";
-import RiyalSymbol from '../components/RiyalSymbol';
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { parseScan, mergeIntoCart, beep } from "../lib/scan";
 import { getPolicy, requireApproval } from "../lib/policy";
 import { getSettings } from "../lib/settings";

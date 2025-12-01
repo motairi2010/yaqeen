@@ -21,13 +21,7 @@ body {
 }
 
 select option {
-  font-family: "RialGlyph", "Saudi-Riyal", "Tajawal", "IBM Plex Sans Arabic", system-ui, sans-serif;
-}
-
-.riyal-symbol,
-*[class*="riyal"],
-*[class*="sar"] {
-  font-family: "RialGlyph", "Saudi-Riyal", "Tajawal", "IBM Plex Sans Arabic", system-ui, sans-serif !important;
+  font-family: "Tajawal", "IBM Plex Sans Arabic", system-ui, sans-serif;
 }
 
 /* تنسيقات مخصصة للجدول */

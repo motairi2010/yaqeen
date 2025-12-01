@@ -1,5 +1,4 @@
-﻿import React from "react";
-import RiyalSymbol from '../components/RiyalSymbol';
+import React from "react";
 import { listInventory } from "../lib/inventory";
 const SarFmt = v => (v).toLocaleString("ar-SA",{ minimumFractionDigits:2, maximumFractionDigits:2 });
 
