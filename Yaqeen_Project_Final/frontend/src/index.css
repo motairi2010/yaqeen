@@ -1,1 +1,13 @@
-﻿
+@import "./styles/fonts.css";
+@import "./styles/invoices.css";
+
+/* 6E'F 916 1E2 'D1J'D (4CD 5-J- */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+select[name="currency"],
+select option {
+  font-family: Arial, "Segoe UI Symbol", "Noto Sans Symbols", "Apple Color Emoji", "Segoe UI", Tahoma, sans-serif !important;
+}
