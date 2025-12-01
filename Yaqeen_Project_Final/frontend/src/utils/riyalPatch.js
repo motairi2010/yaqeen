@@ -1,4 +1,4 @@
-﻿export function watchRiyal(){
+export function watchRiyal(){
   try{
     if (typeof window !== "undefined") {
       if (window.__riyalObs) {
@@ -9,7 +9,7 @@
     }
 
     var FONT = "\"Saudi-Riyal\",\"Tajawal\",\"IBM Plex Sans Arabic\",\"Segoe UI\",system-ui,sans-serif";
-    var SYMBOL_CHAR = "ر";
+    var SYMBOL_CHAR = "﷼";
     var SELECTOR_GUESSES = [
       "select[name*=\"currency\" i]",
       "select[id*=\"currency\" i]",
@@ -161,13 +161,13 @@
 (function(){
   const SEL = '.riyal-symbol, .RiyalSymbolToken-currency-name';
   function ensureSingleRiyal(root=document){
-    // 1) استبدال أي نص "ر.س" أو "SAR" داخل العناصر إلى "ر"
+    // 1) استبدال أي نص "ر.س" أو "SAR" داخل العناصر إلى "﷼"
     root.querySelectorAll(SEL).forEach(el=>{
       // نظف أية عناصر داخلية (svg/img) حتى لا تتكرر
       el.querySelectorAll('svg,img').forEach(n=>n.remove());
       const txt = (el.textContent || '').trim();
       if(/^(?:ر\.س|SAR|ريال سعودي)$/i.test(txt) || txt.length !== 1) {
-        el.textContent = 'ر';
+        el.textContent = '﷼';
       }
       el.setAttribute('aria-label','ريال سعودي');
     });
@@ -178,7 +178,7 @@
       const list = Array.from(p.querySelectorAll(':scope > .riyal-symbol, :scope > .RiyalSymbolToken-currency-name'));
       if(list.length > 1){
         list.forEach((el,i)=>{
-          if(i===0){ el.textContent='ر'; }
+          if(i===0){ el.textContent='﷼'; }
           else { el.remove(); }
         });
       }
@@ -206,8 +206,8 @@
     const iconsSel = 'img[src*="sar"], img[src*="riyal"], svg[class*="sar"], svg[id*="sar"], svg[class*="riyal"], svg[id*="riyal"], svg use[href*="sar"], svg use[xlink\\:href*="sar"], svg use[href*="riyal"], svg use[xlink\\:href*="riyal"]';
     const nodes = root.querySelectorAll(SEL);
     nodes.forEach(el=>{
-      // طبّع النص إلى "ر"
-      if((el.textContent||"").trim() !== "ر") el.textContent = "ر";
+      // طبّع النص إلى "﷼"
+      if((el.textContent||"").trim() !== "﷼") el.textContent = "﷼";
       el.setAttribute("aria-label","ريال سعودي");
 
       // احذف أيقونات قريبة داخل الأب والجد
@@ -239,9 +239,9 @@
 (function(){
   const SEL = ".riyal-symbol, .RiyalSymbolToken-currency-name";
   function sweep(root=document){
-    // خلي النص "ر" فقط
+    // خلي النص "﷼" فقط
     root.querySelectorAll(SEL).forEach(el=>{
-      if((el.textContent||"").trim()!=="ر") el.textContent="ر";
+      if((el.textContent||"").trim()!=="﷼") el.textContent="﷼";
       el.setAttribute("aria-label","ريال سعودي");
     });
     // امسح أي IMG/SVG صغيرة بجوار الرمز حتى لو ما فيها sar بالمسار
@@ -276,8 +276,8 @@
   };
   function oneOnly(root=document){
     root.querySelectorAll(SEL).forEach(el=>{
-      // ثبّت النص على "ر"
-      if((el.textContent||"").trim()!=="ر") el.textContent="ر";
+      // ثبّت النص على "﷼"
+      if((el.textContent||"").trim()!=="﷼") el.textContent="﷼";
       el.setAttribute("aria-label","ريال سعودي");
 
       // احذف أيقونات صغيرة في نفس الحاوية أو الحاوية الأقرب
@@ -312,7 +312,7 @@
   const SEL = ".riyal-symbol, .RiyalSymbolToken-currency-name";
   function lastStrike(root=document){
     root.querySelectorAll(SEL).forEach(el=>{
-      if((el.textContent||"").trim()!=="ر") el.textContent = "ر";
+      if((el.textContent||"").trim()!=="﷼") el.textContent = "﷼";
       el.setAttribute("aria-label","ريال سعودي");
 
       // امشِ للأعلى لثلاثة مستويات ونظّف أي IMG/SVG صغيرة ليست هي الرمز نفسه

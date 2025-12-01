@@ -1,4 +1,4 @@
-﻿import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext } from 'react';
 import RiyalSymbol from '../components/RiyalSymbol';
 
 export const RiyalContext = createContext();
@@ -14,7 +14,7 @@ export const RiyalProvider = ({ children }) => {
       );
     },
     
-    formatText: (amount) => \\ ر.س\,
+    formatText: (amount) => `${amount} ﷼`,
     
     symbol: () => RiyalSymbolToken,
     

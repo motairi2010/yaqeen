@@ -1,4 +1,4 @@
-﻿// src/pages/Invoices.jsx
+// src/pages/Invoices.jsx
 import React from "react";
 import InvoiceHeaderGrid from "../components/InvoiceHeaderGrid";
 import "../styles/invoice-grid.css";
@@ -36,9 +36,9 @@ export default function Invoices() {
     if (f.key === "currency") {
       return (
         <select {...common}>
-          <option value="\u0631.\u0633">\u0631.\u0633 (﷼)</option>
-          <option value="USD $">$ (USD)</option>
-          <option value="EUR \u20ac">\u20ac (EUR)</option>
+          <option value="﷼">﷼ ريال سعودي</option>
+          <option value="USD $">$ دولار أمريكي</option>
+          <option value="EUR €">€ يورو</option>
         </select>
       );
     }
