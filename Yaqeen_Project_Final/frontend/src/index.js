@@ -1,13 +1,9 @@
-﻿import "./styles/sar-symbol.css";
 import "./styles/currency.css";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
-import "./styles/riyal.runtime.css";
-import { watchRiyal } from "./utils/riyalPatch";
-import "./bootstrap";
 import "./dev/CrashCatcher";
 
 const container = document.getElementById("root") || (() => {
@@ -23,12 +19,6 @@ root.render(
     <App />
   </BrowserRouter>
 );
-
-// Riyal watcher: run once
-if (typeof window !== "undefined" && !window.__RIYAL_WATCHING__) {
-  window.__RIYAL_WATCHING__ = true;
-  requestAnimationFrame(() => { try { watchRiyal(); } catch (e) { console.warn("[watchRiyal failed]", e); } });
-}
 
 
 

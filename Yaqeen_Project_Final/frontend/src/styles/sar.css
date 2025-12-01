@@ -1,4 +1,1 @@
-﻿:root{ --RiyalSymbolToken-font: "Noto Sans Arabic","Noto Naskh Arabic","IBM Plex Sans Arabic","Segoe UI","Tahoma",Arial,sans-serif; }
-.RiyalSymbolToken, .currency-RiyalSymbolToken, .price .currency { font-family: var(--RiyalSymbolToken-font); }
-
-
+/* Disabled - using Unicode ﷼ instead */
