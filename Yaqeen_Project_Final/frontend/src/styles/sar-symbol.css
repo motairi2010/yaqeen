@@ -1,4 +1,4 @@
-﻿:root{
+:root{
   --RiyalSymbolToken-font: "Noto Sans Arabic","Segoe UI","Segoe UI Symbol","Tahoma","Arial Unicode MS",system-ui,sans-serif;
   --RiyalSymbolToken-size: 1em;
   --RiyalSymbolToken-gap: .35em;
@@ -232,9 +232,7 @@ svg[id*="riyal"] { display:none !important; }
 
 /* لو فيه use داخل svg sprite */
 svg use[href*="sar"],
-svg use[xlink\\:href*="sar"],
-svg use[href*="riyal"],
-svg use[xlink\\:href*="riyal"] { display:none !important; }
+svg use[href*="riyal"] { display:none !important; }
 
 /* منع أي خلفية تحمل sar/riyal */
 *[style*="sar.svg"],

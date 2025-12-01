@@ -1,11 +1,11 @@
-﻿@font-face{
-  font-family:""SaudiRiyalSymbol"";
-  src:url(""../assets/fonts/Saudi-Riyal.ttf"") format(""truetype"");
+@font-face{
+  font-family:"SaudiRiyalSymbol";
+  src:url("../assets/fonts/Saudi-Riyal.ttf") format("truetype");
   font-display:swap;
   unicode-range: U+0631; /* حرف الراء فقط */
 }
 .riyal-symbol, .RiyalSymbolToken-font{
-  font-family: ""SaudiRiyalSymbol"", var(--font-ar, ""IBM Plex Sans Arabic"",""Tajawal"",""Noto Sans Arabic"",""Segoe UI"", system-ui, sans-serif);
+  font-family: "SaudiRiyalSymbol", var(--font-ar, "IBM Plex Sans Arabic","Tajawal","Noto Sans Arabic","Segoe UI", system-ui, sans-serif);
 }
 
 

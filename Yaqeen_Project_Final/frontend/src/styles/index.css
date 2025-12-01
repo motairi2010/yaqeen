@@ -1,4 +1,4 @@
-﻿@import "./styles/currency.css";
+@import "./currency.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -52,9 +52,7 @@ body {
 /* تأثيرات للتركيز */
 input:focus {
   outline: none;
-  ring: 2px;
-  ring-color: #3b82f6;
-  ring-opacity: 0.5;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
 }
 
 /* تخصيص شريط التمرير */

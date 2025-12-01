@@ -4,6 +4,7 @@
     "description": "ط¨ط±ظ†ط§ظ…ط¬ ظٹظ‚ظٹظ† ط§ظ„ظ…ط­ط§ط³ط¨ظٹ ط§ظ„ط°ظƒظٹ",
     "main": "src/index.js",
     "dependencies": {
+        "@supabase/supabase-js": "^2.39.0",
         "axios": "^1.3.0",
         "date-fns": "^4.1.0",
         "file-saver": "^2.0.5",
@@ -14,6 +15,7 @@
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "react-hook-form": "^7.62.0",
+        "react-is": "^19.2.0",
         "react-router-dom": "^6.30.1",
         "recharts": "^3.2.1",
         "zustand": "^5.0.8"
