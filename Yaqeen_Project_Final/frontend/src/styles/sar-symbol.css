@@ -281,6 +281,15 @@ svg image[href*="sar"], svg image[href*="riyal"] { display:none !important; }
   white-space:nowrap; line-height:1; background:none!important;
   font-family:'RialSymbol','Tajawal','IBM Plex Sans Arabic',sans-serif;
 }
+
+.riyal-symbol::before,
+.riyal-symbol::after,
+.RiyalSymbolToken-currency-name::before,
+.RiyalSymbolToken-currency-name::after {
+  content: none !important;
+  display: none !important;
+}
+
 /* أي حاوية فيها الرمز: لا أيقونات ولا خلفيات صغيرة */
 *:has(.riyal-symbol) img,
 *:has(.riyal-symbol) svg,

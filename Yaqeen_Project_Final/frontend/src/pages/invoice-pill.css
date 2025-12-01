@@ -1,4 +1,13 @@
-﻿/* === Invoice pill look (scoped to the invoices page) ===================== */
+/* === Invoice pill look (scoped to the invoices page) ===================== */
+body.page-invoices .money::before,
+body.page-invoices .money::after,
+body.page-invoices .riyal-symbol::before,
+body.page-invoices .riyal-symbol::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+}
+
 body.page-invoices input:not([type="checkbox"]):not([type="radio"]),
 body.page-invoices select,
 body.page-invoices textarea{

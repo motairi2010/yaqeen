@@ -1,4 +1,4 @@
-﻿@font-face {
+@font-face {
     font-family: 'SaudiRiyal';
     src: url('../assets/fonts/Saudi-Riyal.woff2') format('woff2'),
          url('../assets/fonts/Saudi-Riyal.ttf') format('truetype');
@@ -15,6 +15,11 @@
     font-family: var(--riyal-font);
     color: var(--riyal-color);
     font-weight: bold;
+}
+
+.riyal-symbol::before,
+.riyal-symbol::after {
+    content: none !important;
 }
 
 .riyal-amount {

@@ -9,6 +9,17 @@ body {
   background-color: #f5f7f9;
 }
 
+.money::before,
+.money::after,
+.riyal-symbol::before,
+.riyal-symbol::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  -webkit-mask: none !important;
+  mask: none !important;
+}
+
 /* تنسيقات مخصصة للجدول */
 .table-container {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
