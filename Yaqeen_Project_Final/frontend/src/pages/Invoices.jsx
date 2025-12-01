@@ -3,7 +3,6 @@ import React from "react";
 import InvoiceHeaderGrid from "../components/InvoiceHeaderGrid";
 import "../styles/invoice-grid.css";
 import "../styles/invoices.css";
-import RiyalSymbol from "../components/RiyalSymbol";
 
 const initialHeader = {
   customer: "",
