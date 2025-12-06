@@ -1,5 +1,5 @@
-﻿export const CURRENCIES = [
-  { code: "RiyalSymbolToken", labelAr: "<RiyalSymbol showText={true} />", labelEn: "Saudi Riyal", symbol: "﷼" },
+export const CURRENCIES = [
+  { code: "SAR", labelAr: "ريال سعودي", labelEn: "Saudi Riyal", symbol: "﷼" },
   { code: "USD", labelAr: "دولار أمريكي", labelEn: "US Dollar", symbol: "$" },
   { code: "EUR", labelAr: "يورو",        labelEn: "Euro",       symbol: "€" },
   { code: "GBP", labelAr: "جنيه إسترليني", labelEn: "Pound Sterling", symbol: "£" },
@@ -10,12 +10,11 @@
   { code: "OMR", labelAr: "ريال عُماني",   labelEn: "Omani Rial", symbol: "ر.ع" },
 ];
 
-// يبني تسميات القائمة. نُخفي رمز RiyalSymbolToken فقط داخل القائمة.
-export function getCurrencyOptions({ lang = "ar", hideRiyalSymbolTokenSymbol = true } = {}) {
+export function getCurrencyOptions({ lang = "ar", hideSARSymbol = false } = {}) {
   return CURRENCIES.map(c => {
     const base = lang === "ar" ? c.labelAr : c.labelEn;
     const withSymbol = c.symbol ? `${c.symbol} ${c.code}` : c.code;
-    const label = (c.code === "RiyalSymbolToken" && hideRiyalSymbolTokenSymbol) ? base : withSymbol;
+    const label = (c.code === "SAR" && hideSARSymbol) ? base : withSymbol;
     return { code: c.code, label };
   });
 }

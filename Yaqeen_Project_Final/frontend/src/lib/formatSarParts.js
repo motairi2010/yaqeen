@@ -1,4 +1,4 @@
-﻿// src/lib/formatSarParts.js
+// src/lib/formatSarParts.js
 // ظٹط¹طھظ…ط¯ ط¹ظ„ظ‰ Intl ظ„ظ„ط±ظ‚ظ…طŒ ظˆظٹط¨ط¯ظ‘ظ„ ط¬ط²ط، ط§ظ„ط¹ظ…ظ„ط© ط¥ظ„ظ‰ ï·¼ ظ…ط¹ NBSP
 
 const SYM  = "\uFDFC"; // ï·¼
@@ -9,11 +9,9 @@ export function formatSarParts(value, { digits = 2 } = {}) {
 
   const nf = new Intl.NumberFormat("ar-SA", {
     style: "currency",
-    currency: "RiyalSymbolToken",
+    currency: "SAR",
     minimumFractionDigits: digits,
     maximumFractionDigits: digits,
-    // ظ…ط§ ظٹظ‡ظ…ظ†ط§ ظˆط´ ظٹط·ظ„ط¹ ظ‡ظ†ط§ط› ط¨ظ†ط¨ط¯ظ‘ظ„ ط§ظ„ط±ظ…ط² ظ„ط§ط­ظ‚ط§ظ‹
-    // currencyDisplay: "symbol" | "narrowSymbol" | "code"
   });
 
   try {

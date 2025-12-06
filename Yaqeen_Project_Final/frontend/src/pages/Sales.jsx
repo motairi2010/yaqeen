@@ -64,7 +64,7 @@ export default function Sales(){
         supplier: { name: S.storeName || "Yaqeen", vat: S.storeVAT || "" },
         items: o.items || [],
         totals: { net: o.net, vat: o.vat, gross: o.gross },
-        currency: "RiyalSymbolToken"
+        currency: "SAR"
       });
       zip.file(`${o.id}.xml`, xml);
     }
@@ -131,7 +131,7 @@ export default function Sales(){
                       supplier: { name: S.storeName || "Yaqeen", vat: S.storeVAT || "" },
                       items: o.items||[],
                       totals: { net: o.net, vat: o.vat, gross: o.gross },
-                      currency: "RiyalSymbolToken"
+                      currency: "SAR"
                     });
                     downloadFile(`${o.id}.xml`, xml, "application/xml");
                   }}>تنزيل UBL (XML)</button>
