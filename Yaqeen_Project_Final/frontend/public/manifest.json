@@ -1,0 +1,35 @@
+{
+  "short_name": "يقين",
+  "name": "برنامج يقين المحاسبي الذكي",
+  "description": "نظام نقاط البيع والمحاسبة الشامل",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "brand/logo-mark.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "brand/logo-mark.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#1e40af",
+  "background_color": "#ffffff",
+  "orientation": "portrait",
+  "scope": "/",
+  "dir": "rtl",
+  "lang": "ar",
+  "categories": ["business", "finance", "productivity"],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
