@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function RiyalSymbol({ amount, digits = 2, size = 16, className = "", showText = false }) {
   if (showText) {
-    return <span className={className}>ريال سعودي</span>;
+    return <span className={className}>﷼</span>;
   }
 
   const value = amount !== undefined

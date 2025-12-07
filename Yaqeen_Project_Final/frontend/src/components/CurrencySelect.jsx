@@ -8,7 +8,7 @@ export default function CurrencySelect({
   allowed
 }) {
   const all = [
-    { code: "SAR", label: "﷼ ريال" },
+    { code: "SAR", label: "﷼" },
     { code: "USD", label: "$ دولار" },
     { code: "EUR", label: "€ يورو" },
     { code: "GBP", label: "£ جنيه" },

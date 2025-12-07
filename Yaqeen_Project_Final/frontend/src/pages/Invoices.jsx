@@ -35,7 +35,7 @@ export default function Invoices() {
     if (f.key === "currency") {
       return (
         <select {...common} style={{fontFamily: 'Arial, "Segoe UI Symbol", "Noto Sans Symbols", sans-serif', fontSize: '16px'}}>
-          <option value="SAR">﷼ ريال</option>
+          <option value="SAR">﷼</option>
           <option value="USD">$ دولار</option>
           <option value="EUR">€ يورو</option>
         </select>
