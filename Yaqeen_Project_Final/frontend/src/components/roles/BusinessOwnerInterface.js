@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import UnifiedLayout from '../layout/UnifiedLayout';
 
 const BusinessOwnerInterface = ({ onRoleChange }) => {
@@ -61,15 +61,15 @@ const BusinessOwnerInterface = ({ onRoleChange }) => {
           <div className="space-y-3">
             <div className="flex justify-between">
               <span>معدل الإشغال اليومي:</span>
-              <span class="amount-RiyalSymbolToken" className="text-green-600">78%</span>
+              <span className="text-green-600 amount-RiyalSymbolToken">78%</span>
             </div>
             <div className="flex justify-between">
               <span>متوسط قيمة الفاتورة:</span>
-              <span class="amount-RiyalSymbolToken" className="text-green-600">45 ﷼</span>
+              <span className="text-green-600 amount-RiyalSymbolToken">45 ﷼</span>
             </div>
             <div className="flex justify-between">
               <span>التكلفة التشغيلية:</span>
-              <span class="amount-RiyalSymbolToken" className="text-red-600">68% من الإيرادات</span>
+              <span className="text-red-600 amount-RiyalSymbolToken">68% من الإيرادات</span>
             </div>
           </div>
         </div>

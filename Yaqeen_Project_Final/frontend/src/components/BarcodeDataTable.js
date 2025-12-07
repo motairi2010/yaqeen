@@ -1,4 +1,4 @@
-﻿import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Barcode, Trash2, Plus, Minus, ShoppingCart } from 'lucide-react';
 import useBarcodeStore from '../stores/useBarcodeStore';
 
@@ -59,7 +59,7 @@ const BarcodeDataTable = () => {
                 <ShoppingCart size={16} className="inline ml-1" />
                 {itemCount} عنصر
               </div>
-              <div className="bg-green-100 text-green-800 px-3 py-1 rounded-full" class="amount-RiyalSymbolToken">
+              <div className="bg-green-100 text-green-800 px-3 py-1 rounded-full amount-RiyalSymbolToken">
                 الإجمالي: {total.toFixed(2)} ﷼
               </div>
             </div>
@@ -134,7 +134,7 @@ const BarcodeDataTable = () => {
                       <td className="px-6 py-4 text-sm font-medium text-gray-900">{item.barcode}</td>
                       <td className="px-6 py-4 text-sm text-gray-900">{item.name}</td>
                       <td className="px-6 py-4 text-sm text-gray-600">{item.category}</td>
-                      <td className="px-6 py-4 text-sm text-gray-900" class="amount-RiyalSymbolToken">{item.price.toFixed(2)} ﷼</td>
+                      <td className="px-6 py-4 text-sm text-gray-900 amount-RiyalSymbolToken">{item.price.toFixed(2)} ﷼</td>
                       <td className="px-6 py-4">
                         <div className="flex items-center space-x-2">
                           <button
@@ -152,7 +152,7 @@ const BarcodeDataTable = () => {
                           </button>
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-sm font-medium text-green-600" class="amount-RiyalSymbolToken">{item.total.toFixed(2)} ﷼</td>
+                      <td className="px-6 py-4 text-sm font-medium text-green-600 amount-RiyalSymbolToken">{item.total.toFixed(2)} ﷼</td>
                       <td className="px-6 py-4 text-sm text-gray-500">{item.timestamp}</td>
                       <td className="px-6 py-4">
                         <button
@@ -171,7 +171,7 @@ const BarcodeDataTable = () => {
                       الإجمالي العام:
                     </td>
                     <td className="px-6 py-4 text-sm font-medium">{itemCount}</td>
-                    <td className="px-6 py-4 text-sm font-medium text-green-600" class="amount-RiyalSymbolToken">{total.toFixed(2)} ﷼</td>
+                    <td className="px-6 py-4 text-sm font-medium text-green-600 amount-RiyalSymbolToken">{total.toFixed(2)} ﷼</td>
                     <td colSpan="2"></td>
                   </tr>
                 </tfoot>

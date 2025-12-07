@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import useRetailStore from '../stores/retail/useRetailStore';
 
@@ -59,7 +59,7 @@ const RetailDashboard = () => {
           <div className="space-y-2">
             {topProducts.map(([productId, data], index) => (
               <div key={productId} className="flex justify-between items-center p-2 bg-gray-50 rounded">
-                <span className="font-medium" class="amount-RiyalSymbolToken">المنتج #{index + 1}</span>
+                <span className="font-medium amount-RiyalSymbolToken">المنتج #{index + 1}</span>
                 <span className="text-blue-600 font-bold">{data.revenue} ﷼</span>
               </div>
             ))}
